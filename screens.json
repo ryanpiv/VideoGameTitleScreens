@@ -4,19 +4,23 @@
       "game_title": "Skyrim",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "5",
-      "game_path": ""
+      "game_path": "",
+      "game_still_path": ""
     },
     {
       "game_title": "Morrowind",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "3",
-      "game_path": ""
+      "game_path": "",
+      "game_still_path": ""
+
     },
     {
       "game_title": "Oblivion",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "4",
-      "game_path": ""
+      "game_path": "",
+      "game_still_path": ""
     }
 
   ]
