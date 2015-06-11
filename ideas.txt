@@ -1,0 +1,4 @@
+Add a search bar
+--When typing, reposition to the top of the screen
+--Search bar will sort values of divs to find start screens
+--Use mixx.js
