@@ -1,3 +1,12 @@
+Workflow:
+-Create mock JSON file and parse ( JSON.parse(text) )
+-Set up general structure of divs to be added to webpage dynamically
+-Add search bar
+-hookup mixitup to search bar
+-Add all items to search through
+
+To do:
+
 Add a search bar
 --When typing, reposition to the top of the screen
 --Search bar will sort values of divs to find start screens
