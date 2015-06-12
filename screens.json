@@ -4,7 +4,7 @@
       "game_title": "Skyrim",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "5",
-      "game_path": "",
+      "game_video_path": "",
       "game_still_path": "StartScreens/Skyrim/maxresdefault.jpg",
       "game_formal_name": "The Elder Scrolls V: Skyrim"
     },
@@ -12,7 +12,7 @@
       "game_title": "Morrowind",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "3",
-      "game_path": "",
+      "game_video_path": "",
       "game_still_path": "StartScreens/marrowind/default.jpg",
       "game_formal_name": "The Elder Scrolls III: Morrowind"
 
@@ -21,10 +21,73 @@
       "game_title": "Oblivion",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "4",
-      "game_path": "",
+      "game_video_path": "",
       "game_still_path": "StartScreens/Oblivion/default.jpg",
       "game_formal_name": "The Elder Scrolls IV: Oblivion"
+    },
+    {
+      "game_title": "Combat Evolved",
+      "game_series_name": "Halo",
+      "game_series_sequence": "1",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo: Combat Evolved"
+    },
+    {
+      "game_title": "Halo 2",
+      "game_series_name": "Halo",
+      "game_series_sequence": "2",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": ""
+    },
+    {
+      "game_title": "Halo 3",
+      "game_series_name": "Halo",
+      "game_series_sequence": "3",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo 3"
+    },
+    {
+      "game_title": "Halo 4",
+      "game_series_name": "Halo",
+      "game_series_sequence": "4",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo 4"
+    },
+    {
+      "game_title": "Halo Wars",
+      "game_series_name": "Halo",
+      "game_series_sequence": "",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo Wars"
+    },
+    {
+      "game_title": "Reach",
+      "game_series_name": "Halo",
+      "game_series_sequence": "",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo: Reach"
+    },
+    {
+      "game_title": "ODST",
+      "game_series_name": "Halo",
+      "game_series_sequence": "",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo 3: ODST"
+    },
+    {
+      "game_title": "The Master Chief Collection",
+      "game_series_name": "Halo",
+      "game_series_sequence": "",
+      "game_video_path": "",
+      "game_still_path": "",
+      "game_formal_name": "Halo: The Master Chief Collection"
     }
-
   ]
 }

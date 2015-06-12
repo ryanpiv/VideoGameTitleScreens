@@ -7,7 +7,7 @@ $(document).ready(function(){
       output+= ' data-game-title="' + data.games[i].game_title + '"';
       output+= ' data-game-series-name="' + data.games[i].game_series_name + '"';
       output+= ' data-game-series-sequence="' + data.games[i].game_series_sequence + '"';
-      output+= ' data-game-path="' + data.games[i].game_path + '"></div>';
+      output+= ' data-game-path="' + data.games[i].game_video_path + '"></div>';
       output+= '</div>';
     }
     $("#games-row").append(output);
