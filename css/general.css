@@ -14,3 +14,16 @@ body{
   background-color: #595f64;
   color: #C5CDD3;
 }
+.container{
+  width:94%;
+  margin-left:3%;
+  margin-top: 5%;
+}
+.game-item{
+  background-size:cover;
+  border-radius: 10px;
+  height:100%;
+}
+.games-row{
+  height: 15%;
+}

@@ -5,14 +5,16 @@
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "5",
       "game_path": "",
-      "game_still_path": ""
+      "game_still_path": "StartScreens/Skyrim/maxresdefault.jpg",
+      "game_formal_name": "The Elder Scrolls V: Skyrim"
     },
     {
       "game_title": "Morrowind",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "3",
       "game_path": "",
-      "game_still_path": ""
+      "game_still_path": "StartScreens/marrowind/default.jpg",
+      "game_formal_name": "The Elder Scrolls III: Morrowind"
 
     },
     {
@@ -20,7 +22,8 @@
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "4",
       "game_path": "",
-      "game_still_path": ""
+      "game_still_path": "StartScreens/Oblivion/default.jpg",
+      "game_formal_name": "The Elder Scrolls IV: Oblivion"
     }
 
   ]
