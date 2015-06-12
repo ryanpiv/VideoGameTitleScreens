@@ -30,7 +30,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "1",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_CE/default.jpg",
       "game_formal_name": "Halo: Combat Evolved"
     },
     {
@@ -38,7 +38,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "2",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_2/default.jpg",
       "game_formal_name": ""
     },
     {
@@ -46,7 +46,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "3",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_3/default.jpg",
       "game_formal_name": "Halo 3"
     },
     {
@@ -54,7 +54,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "4",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_4/default.jpg",
       "game_formal_name": "Halo 4"
     },
     {
@@ -62,7 +62,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_Wars/default.jpg",
       "game_formal_name": "Halo Wars"
     },
     {
@@ -70,7 +70,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_Reach/default.jpg",
       "game_formal_name": "Halo: Reach"
     },
     {
@@ -78,7 +78,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_3_ODST/default.jpg",
       "game_formal_name": "Halo 3: ODST"
     },
     {
@@ -86,7 +86,7 @@
       "game_series_name": "Halo",
       "game_series_sequence": "",
       "game_video_path": "",
-      "game_still_path": "",
+      "game_still_path": "StartScreens/Halo_MCC/default.jpg",
       "game_formal_name": "Halo: The Master Chief Collection"
     }
   ]

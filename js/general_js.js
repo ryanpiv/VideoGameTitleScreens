@@ -9,7 +9,16 @@ $(document).ready(function(){
       output+= ' data-game-series-sequence="' + data.games[i].game_series_sequence + '"';
       output+= ' data-game-path="' + data.games[i].game_video_path + '"></div>';
       output+= '</div>';
+      /*if(output.length % 12 == 0) {
+        //force new row
+        output+= '</div><div class="row games-row">';
+      }*/
     }
+    /*if(output.length > 12){
+      //complete last added row
+      output+= '</div>';
+    }*/
     $("#games-row").append(output);
   });
 });
+//https://jsfiddle.net/ktf6rtwd/3/

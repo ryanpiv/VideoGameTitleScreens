@@ -27,3 +27,9 @@ body{
 .games-row{
   height: 15%;
 }
+.center{
+  width: 90%;
+  height: 90%;
+  padding: 10px;
+  margin: 10px auto;
+}
