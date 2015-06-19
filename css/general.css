@@ -6,6 +6,9 @@ body{
 
   background-color: #067dd8;
 }
+.row{
+  margin-bottom:5px;
+}
 .navbar-fixed-top{
   padding-right: 25px;
   padding-left: 10px;
@@ -48,7 +51,7 @@ body{
 .hover-out{
   opacity:1;
   background-color:#ccc;
-  width: 100%;
+  /*width: 100%;*/
 }
 .hover-in{
   opacity:0;
@@ -60,6 +63,7 @@ body{
 .hover-class{
   opacity:0.5;
   transition:opacity .3s;
+  cursor: pointer;
 }
 /*.hover-cont:hover .hover-in{
   opacity:1;
