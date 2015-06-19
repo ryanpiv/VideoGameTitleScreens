@@ -33,7 +33,8 @@ $(document).ready(function()
         title: mydata.attr('data-game-title'),
         path: mydata.attr('data-game-path')
       };
-      window.open(location.href='player/'+$.param(myobj));
+      window.open('player.html'+'?'+$.param(myobj), '_blank');
+      //window.open(location.href='player.html/'+$.param(myobj));
       //location.href=$.param(myobj);
       //document.location.search += $.param(myobj);
     });
