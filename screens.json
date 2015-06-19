@@ -37,7 +37,7 @@
       "game_title": "Halo 2",
       "game_series_name": "Halo",
       "game_series_sequence": "2",
-      "game_video_path": "",
+      "game_video_path": "StartScreens/Halo_2/default.webm",
       "game_still_path": "StartScreens/Halo_2/default.jpg",
       "game_formal_name": "Halo 2"
     },
@@ -88,6 +88,30 @@
       "game_video_path": "",
       "game_still_path": "StartScreens/Halo_MCC/default.jpg",
       "game_formal_name": "Halo: The Master Chief Collection"
+    },
+    {
+      "game_title": "Metroid Prime",
+      "game_series_name": "Metroid",
+      "game_series_sequence": "1",
+      "game_video_path": "",
+      "game_still_path": "StartScreens/Metroid_Prime/default.jpg",
+      "game_formal_name": "Metroid Prime"
+    },
+    {
+      "game_title": "Metroid Prime 2",
+      "game_series_name": "Metroid",
+      "game_series_sequence": "2",
+      "game_video_path": "",
+      "game_still_path": "StartScreens/Metroid_Prime_2/default.jpg",
+      "game_formal_name": "Metroid Prime 2: Echoes"
+    },
+    {
+      "game_title": "Metroid Prime 3: Corruption",
+      "game_series_name": "Metroid",
+      "game_series_sequence": "3",
+      "game_video_path": "",
+      "game_still_path": "StartScreens/Metroid_Prime_3/default.jpg",
+      "game_formal_name": "Metroid Prime 3: Corruption"
     }
   ]
 }
