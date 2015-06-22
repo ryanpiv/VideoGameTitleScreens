@@ -1,12 +1,39 @@
 window.onload = function(){
   debugger;
-  var title = getParameterByName("title");
-  var video = getParameterByName("path");
-  //var audio = getParameterByName("audio_path");
-  alert(title+"   "+video);
-  //get video from file system here using provided query string paths
-  //json is already parsed on index to speed up loading times.
-  //no need to parse twice
+  var title;
+  var video;
+  var color;
+  var audio;
+  var html = '';
+
+  if(typeof(Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+    title = localStorage.getItem('title');
+    video = localStorage.getItem('path');
+    color = localStorage.getItem('bg_color');
+    audio = localStorage.getItem('audio_path');
+  } else {
+    // Sorry! No Web Storage support..
+    title = getParameterByName("title");
+    video = getParameterByName("path");
+    color = getParameterByName("bg_color");
+    audio = getParameterByName("audio_path");
+  }
+
+  if(color === 'undefined' || color === ''){
+    color = 'black';
+  }
+  $('body').css('background-color', color);
+
+  html += '<video id="" autoplay loop><source src="';
+  html += video;
+  html += '" type="video/webm"></video>';
+  $('#video-container').append(html);
+
+  html = '<audio preload="auto" autoplay="" loop="" controls=""><source src="';
+  html+= audio + '" type="audio/mpeg"></audio>';
+  $('#audio-container').append(html);
+
 };
 
 function getParameterByName(name) {

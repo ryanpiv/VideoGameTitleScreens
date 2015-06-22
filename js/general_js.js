@@ -11,7 +11,9 @@ $(document).ready(function()
       output+= ' data-game-title="' + data.games[i].game_title + '"';
       output+= ' data-game-series-name="' + data.games[i].game_series_name + '"';
       output+= ' data-game-series-sequence="' + data.games[i].game_series_sequence + '"';
-      output+= ' data-game-path="' + data.games[i].game_video_path + '">';
+      output+= ' data-game-path="' + data.games[i].game_video_path + '"';
+      output+= ' data-game-background-color="' + data.games[i].game_background_color + '"';
+      output+= ' data-game-audio-path="' + data.games[i].game_audio_path + '">';
       output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
 
       count+=3;
@@ -28,12 +30,27 @@ $(document).ready(function()
     //for dom to detect
     $('.col-lg-3').click(function(){
       var mydata = $(this).children('.game-item');
-      var test = mydata.attr('data-game-title');
-      var myobj = {
-        title: mydata.attr('data-game-title'),
-        path: mydata.attr('data-game-path')
-      };
-      window.open('player.html'+'?'+$.param(myobj), '_blank');
+      var myobj;
+
+      if(typeof(Storage) !== 'undefined'){
+        //code for local Storage
+        debugger;
+        localStorage.setItem("title", mydata.attr('data-game-title'));
+        localStorage.setItem("path", mydata.attr('data-game-path'));
+        localStorage.setItem("bg_color", mydata.attr('data-game-background-color'));
+        localStorage.setItem("audio_path", mydata.attr('data-game-audio-path'));
+
+        window.open('player.html', '_blank');
+      } else {
+        //no web storage, begin query string
+        myobj = {
+          title: mydata.attr('data-game-title'),
+          path: mydata.attr('data-game-path'),
+          bg_color: mydata.attr('data-game-background-color'),
+          audio_path: mydata.attr('data-game-audio-path')
+        };
+        window.open('player.html'+'?'+$.param(myobj), '_blank');
+      }
       //window.open(location.href='player.html/'+$.param(myobj));
       //location.href=$.param(myobj);
       //document.location.search += $.param(myobj);
