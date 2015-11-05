@@ -34,6 +34,15 @@ window.onload = function(){
   html+= audio + '" type="audio/mpeg"></audio>';
   $('#audio-container').append(html);
 
+  
+  //show buffered percentage
+  /*
+  var videoTags = $('video');
+  videoTags[0].addEventListener('progress', function() {
+    var loadedPercentage = (this.buffered.end(0) / this.duration) * 100;
+    console.log(loadedPercentage);  
+  }); */
+  
 };
 
 function getParameterByName(name) {
@@ -46,3 +55,8 @@ function getParameterByName(name) {
 /*$(document).ready(function(){
 
 });*/
+
+$(document).ready(function(){
+  
+});
+

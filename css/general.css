@@ -15,7 +15,7 @@ body{
   padding-left: 10px;
 }
 .navbar-brand .nav .navbar-header .navbar{
-  background-color: #595f64;
+  /*background-color: #595f64;*/
   color: #C5CDD3;
 }
 .container{
@@ -86,3 +86,22 @@ body{
   opacity:.5;
   transition:opacity .5s;
 }*/
+.div-search{
+  height:15%
+}
+.input-search{
+  border:none;
+  border-bottom:1px solid #ccc;
+  width:100%;
+  background-color: transparent;
+  font: 600 30px/30px OpenSans,sans-serif;
+  outline: 0;
+  color: #969696;
+
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    opacity: .3 !important;
+}
+#Container .mix{
+  display: none;
+}

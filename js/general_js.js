@@ -2,23 +2,25 @@ $(document).ready(function()
 {
   $.getJSON('screens.json', function(data)
   {
-    var output ='<div class="hover-cont"><div class="row">';
+    //var output ='<div id="Container" class="hover-cont"><div class="row">';
+    var output ='<div id="Container" class="hover-cont">';
     var count = 0;
     for(var i in data.games)
     {
-      output+= '<div class="col-lg-3"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
+      output+= '<div class="col-lg-3 col-md-4 col-sm-6 mix" data-myorder="' + data.games[i].game_series_name + ' ' + data.games[i].game_series_sequence +'"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
       output+= 'style="background-image:url(' + data.games[i].game_still_path + ')"';
       output+= ' data-game-title="' + data.games[i].game_title + '"';
       output+= ' data-game-series-name="' + data.games[i].game_series_name + '"';
       output+= ' data-game-series-sequence="' + data.games[i].game_series_sequence + '"';
       output+= ' data-game-path="' + data.games[i].game_video_path + '"';
       output+= ' data-game-background-color="' + data.games[i].game_background_color + '"';
+      output+= ' data-game-formal-name="' + data.games[i].game_formal_name.toUpperCase() + '"';
       output+= ' data-game-audio-path="' + data.games[i].game_audio_path + '">';
       output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
 
       count+=3;
       if(count >= 12){
-        output+='</div><div class="row">';
+        //output+='</div><div class="row">';
         count = 0;
       }
     }
@@ -28,7 +30,7 @@ $(document).ready(function()
   .done(function(){
     //may need to loop through and add css classes here
     //for dom to detect
-    $('.col-lg-3').click(function(){
+    $('.mix').click(function(){
       var mydata = $(this).children('.game-item');
       var myobj;
 
@@ -55,9 +57,22 @@ $(document).ready(function()
       //location.href=$.param(myobj);
       //document.location.search += $.param(myobj);
     });
+
+    $("#Container").mixItUp({
+      load:{
+        sort: 'default:desc'
+      },
+      selectors:{
+        sort: '.sort'
+      }
+    });
+
+    var $gamesDivArray = [];
+    $('#Container .mix').each(function(){
+      $gamesDivArray.push(this);
+    });
+
   });
-
-
 });
 
 function lowerOpacity(elem) {
@@ -72,3 +87,16 @@ function raiseOpacity(elem) {
   $(title).css("opacity", "0");
 }
 //https://jsfiddle.net/ktf6rtwd/3/
+
+//detect key input on search
+$(document).on('keyup', '.input-search', function(){
+  //if($('.mix').attr
+  var searchTerm = $.trim($('.input-search').val().toUpperCase());
+  if(searchTerm === '' || searchTerm === 'undefined') {
+    $("#Container > .mix > div").parent().show(); 
+    return;
+  }
+  $("#Container > .mix > div").parent().hide(); 
+  $('#Container > .mix > div[data-game-formal-name*="'+searchTerm.toUpperCase()+'"]').parent().show();
+});
+

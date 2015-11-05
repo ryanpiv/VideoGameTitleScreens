@@ -1,21 +1,12 @@
 {
   "games": [
     {
-      "game_title": "Skyrim",
-      "game_series_name": "The Elder Scrolls",
-      "game_series_sequence": "5",
-      "game_video_path": "",
-      "game_still_path": "StartScreens/Skyrim/maxresdefault.jpg",
-      "game_formal_name": "The Elder Scrolls V: Skyrim"
-    },
-    {
       "game_title": "Morrowind",
       "game_series_name": "The Elder Scrolls",
       "game_series_sequence": "3",
       "game_video_path": "",
       "game_still_path": "StartScreens/marrowind/default.jpg",
       "game_formal_name": "The Elder Scrolls III: Morrowind"
-
     },
     {
       "game_title": "Oblivion",
@@ -26,10 +17,19 @@
       "game_formal_name": "The Elder Scrolls IV: Oblivion"
     },
     {
+      "game_title": "Skyrim",
+      "game_series_name": "The Elder Scrolls",
+      "game_series_sequence": "5",
+      "game_video_path": "",
+      "game_still_path": "StartScreens/Skyrim/maxresdefault.jpg",
+      "game_formal_name": "The Elder Scrolls V: Skyrim"
+    },
+    {
       "game_title": "Combat Evolved",
       "game_series_name": "Halo",
       "game_series_sequence": "1",
-      "game_video_path": "",
+      "game_video_path": "StartScreens/Halo_CE/default.webm",
+      "game_audio_path": "StartScreens/Halo_CE/default.ogg",
       "game_still_path": "StartScreens/Halo_CE/default.jpg",
       "game_formal_name": "Halo: Combat Evolved"
     },
@@ -47,46 +47,61 @@
       "game_title": "Halo 3",
       "game_series_name": "Halo",
       "game_series_sequence": "3",
-      "game_video_path": "",
+      "game_video_path": "StartScreens/Halo_3/default.webm",
+      "game_audio_path": "StartScreens/Halo_3/default.ogg",
       "game_still_path": "StartScreens/Halo_3/default.jpg",
       "game_formal_name": "Halo 3"
     },
     {
       "game_title": "Halo 4",
       "game_series_name": "Halo",
-      "game_series_sequence": "4",
-      "game_video_path": "",
+      "game_series_sequence": "7",
+      "game_video_path": "StartScreens/Halo_4/default.webm",
+      "game_audio_path": "StartScreens/Halo_4/default.ogg",
       "game_still_path": "StartScreens/Halo_4/default.jpg",
       "game_formal_name": "Halo 4"
     },
     {
+      "game_title": "Halo 5",
+      "game_series_name": "Halo",
+      "game_series_sequence": "9",
+      "game_video_path": "StartScreens/Halo_5/default.webm",
+      "game_audio_path": "StartScreens/Halo_5/default.ogg",
+      "game_still_path": "StartScreens/Halo_5/default.jpg",
+      "game_formal_name": "Halo 5"
+    },
+    {
       "game_title": "Halo Wars",
       "game_series_name": "Halo",
-      "game_series_sequence": "",
-      "game_video_path": "",
+      "game_series_sequence": "5",
+      "game_video_path": "StartScreens/Halo_Wars/default.webm",
+      "game_audio_path": "StartScreens/Halo_Wars/default.ogg",
       "game_still_path": "StartScreens/Halo_Wars/default.jpg",
-      "game_formal_name": "Halo Wars"
+      "game_formal_name": "Halo Wars",
+      "game_background_color": "#000A13"
     },
     {
       "game_title": "Reach",
       "game_series_name": "Halo",
-      "game_series_sequence": "",
-      "game_video_path": "",
+      "game_series_sequence": "6",
+      "game_video_path": "StartScreens/Halo_Reach/default.webm",
+      "game_audio_path": "StartScreens/Halo_Reach/default.ogg",
       "game_still_path": "StartScreens/Halo_Reach/default.jpg",
       "game_formal_name": "Halo: Reach"
     },
     {
       "game_title": "ODST",
       "game_series_name": "Halo",
-      "game_series_sequence": "",
-      "game_video_path": "",
+      "game_series_sequence": "4",
+      "game_video_path": "StartScreens/Halo_3_ODST/default.webm",
+      "game_audio_path": "StartScreens/Halo_3_ODST/default.ogg",
       "game_still_path": "StartScreens/Halo_3_ODST/default.jpg",
       "game_formal_name": "Halo 3: ODST"
     },
     {
       "game_title": "The Master Chief Collection",
       "game_series_name": "Halo",
-      "game_series_sequence": "",
+      "game_series_sequence": "8",
       "game_video_path": "",
       "game_still_path": "StartScreens/Halo_MCC/default.jpg",
       "game_formal_name": "Halo: The Master Chief Collection"
@@ -95,7 +110,8 @@
       "game_title": "Metroid Prime",
       "game_series_name": "Metroid",
       "game_series_sequence": "1",
-      "game_video_path": "",
+      "game_video_path": "StartScreens/Metroid_Prime/default.webm",
+      "game_audio_path": "StartScreens/Metroid_Prime/default.ogg",
       "game_still_path": "StartScreens/Metroid_Prime/default.jpg",
       "game_formal_name": "Metroid Prime"
     },
