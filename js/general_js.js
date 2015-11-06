@@ -7,7 +7,7 @@ $(document).ready(function()
     var count = 0;
     for(var i in data.games)
     {
-      output+= '<div class="col-lg-3 col-md-4 col-sm-6 mix" data-myorder="' + data.games[i].game_series_name + ' ' + data.games[i].game_series_sequence +'"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
+      output+= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mix" data-myorder="' + data.games[i].game_series_name + ' ' + data.games[i].game_series_sequence +'"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
       output+= 'style="background-image:url(' + data.games[i].game_still_path + ')"';
       output+= ' data-game-title="' + data.games[i].game_title + '"';
       output+= ' data-game-series-name="' + data.games[i].game_series_name + '"';
