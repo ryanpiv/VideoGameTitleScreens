@@ -125,12 +125,17 @@ $(document).on('click', '.ui-hamburger', function(){
   if(clicked == 0){
     $('.search-row').stop().slideDown(function(){
       $('.search-row').css('display', 'block');
+      clicked = 1;
     });
   } else {
     $('.search-row').stop().slideUp(function(){
       $('.search-row').css('display', 'none');
+      clicked = 0;
     });
   }
-  
-  clicked = 1;
+});
+
+$(document).on('click', '.btn-sort', function(){
+  $('.btn-sort').removeClass('sort-active');
+  $(this).addClass('sort-active');
 });

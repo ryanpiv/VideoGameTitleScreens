@@ -25,7 +25,7 @@ window.onload = function(){
   }
   $('body').css('background-color', color);
 
-  html += '<video id="" autoplay loop><source src="';
+  html += '<video id="video" autobuffer autoplay loop><source src="';
   html += video;
   html += '" type="video/webm"></video>';
   $('#video-container').append(html);
@@ -42,6 +42,8 @@ window.onload = function(){
     var loadedPercentage = (this.buffered.end(0) / this.duration) * 100;
     console.log(loadedPercentage);  
   }); */
+
+  $('#video').play();
   
 };
 
