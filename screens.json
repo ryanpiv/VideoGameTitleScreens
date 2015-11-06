@@ -130,6 +130,193 @@
       "game_video_path": "",
       "game_still_path": "StartScreens/Metroid_Prime_3/default.jpg",
       "game_formal_name": "Metroid Prime 3: Corruption"
+    },
+    {
+      "game_title": "The Last of Us",
+      "game_series_name": "The Last of Us",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/The_Last_of_Us/default.webm",
+      "game_still_path": "StartScreens/The_Last_of_Us/default.jpg",
+      "game_formal_name": "The Last of Us"
+    },
+    {
+      "game_title": "World of Warcraft",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/WoW_Vanilla/default.webm",
+      "game_still_path": "StartScreens/WoW_Vanilla/default.jpg",
+      "game_formal_name": "World of Warcraft"
+    },
+    {
+      "game_title": "The Burning Crusade",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "2",
+      "game_video_path": "StartScreens/WoW_Burning_Crusade/default.webm",
+      "game_still_path": "StartScreens/WoW_Burning_Crusade/default.jpg",
+      "game_formal_name": "World of Warcraft: The Burning Crusade"
+    },
+    {
+      "game_title": "Wrath of the Lich King",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "3",
+      "game_video_path": "StartScreens/WoW_WotLK/default.webm",
+      "game_still_path": "StartScreens/WoW_WotLK/default.jpg",
+      "game_formal_name": "World of Warcraft: Wrath of the Lich King"
+    },
+    {
+      "game_title": "Cataclysm",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "4",
+      "game_video_path": "StartScreens/WoW_Cataclysm/default.webm",
+      "game_still_path": "StartScreens/WoW_Cataclysm/default.jpg",
+      "game_formal_name": "World of Warcraft: Cataclysm"
+    },
+    {
+      "game_title": "Mists of Pandaria",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "5",
+      "game_video_path": "StartScreens/WoW_MoP/default.webm",
+      "game_still_path": "StartScreens/WoW_MoP/default.jpg",
+      "game_formal_name": "World of Warcraft: Mists of Pandaria"
+    },
+    {
+      "game_title": "Warlords of Draenor",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "6",
+      "game_video_path": "StartScreens/WoW_WoD/default.webm",
+      "game_still_path": "StartScreens/WoW_WoD/default.jpg",
+      "game_formal_name": "World of Warcraft: Warlords of Draenor"
+    },
+    {
+      "game_title": "Pikmin",
+      "game_series_name": "Pikmin",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Pikmin/default.webm",
+      "game_still_path": "StartScreens/Pikmin/default.jpg",
+      "game_formal_name": "Pikmin"
+    },
+    {
+      "game_title": "Pikmin 2",
+      "game_series_name": "Pikmin",
+      "game_series_sequence": "2",
+      "game_video_path": "StartScreens/Pikmin_2/default.webm",
+      "game_still_path": "StartScreens/Pikmin_2/default.jpg",
+      "game_formal_name": "Pikmin 2"
+    },
+    {
+      "game_title": "Pikmin 3",
+      "game_series_name": "Pikmin",
+      "game_series_sequence": "3",
+      "game_video_path": "StartScreens/Pikmin_3/default.webm",
+      "game_still_path": "StartScreens/Pikmin_3/default.jpg",
+      "game_formal_name": "Pikmin 3"
+    },
+    {
+      "game_title": "Super Mario Sunshine",
+      "game_series_name": "Super Mario",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Super_Mario_Sunshine/default.webm",
+      "game_still_path": "StartScreens/Super_Mario_Sunshine/default.jpg",
+      "game_formal_name": "Super Mario Sunshine"
+    },
+    {
+      "game_title": "Super Smash Bros.",
+      "game_series_name": "Super Smash Bros.",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/SSB/default.webm",
+      "game_still_path": "StartScreens/SSB/default.jpg",
+      "game_formal_name": "Super Smash Bros."
+    },
+    {
+      "game_title": "Melee",
+      "game_series_name": "Super Smash Bros.",
+      "game_series_sequence": "2",
+      "game_video_path": "StartScreens/SSB_Melee/default.webm",
+      "game_still_path": "StartScreens/SSB_Melee/default.jpg",
+      "game_formal_name": "Super Smash Bros. Melee"
+    },
+    {
+      "game_title": "Brawl",
+      "game_series_name": "Super Smash Bros.",
+      "game_series_sequence": "3",
+      "game_video_path": "StartScreens/SSB_Brawl/default.webm",
+      "game_still_path": "StartScreens/SSB_Brawl/default.jpg",
+      "game_formal_name": "Super Smash Bros. Brawl"
+    },
+    {
+      "game_title": "Mass Effect",
+      "game_series_name": "Mass Effect",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Mass_Effect/default.webm",
+      "game_still_path": "StartScreens/Mass_Effect/default.jpg",
+      "game_formal_name": "Mass Effect"
+    },
+    {
+      "game_title": "Mass Effect",
+      "game_series_name": "Mass Effect",
+      "game_series_sequence": "2",
+      "game_video_path": "StartScreens/Mass_Effect_2/default.webm",
+      "game_still_path": "StartScreens/Mass_Effect_2/default.jpg",
+      "game_formal_name": "Mass Effect 2"
+    },
+    {
+      "game_title": "Mass Effect",
+      "game_series_name": "Mass Effect 3",
+      "game_series_sequence": "3",
+      "game_video_path": "StartScreens/Mass_Effect_3/default.webm",
+      "game_still_path": "StartScreens/Mass_Effect_3/default.jpg",
+      "game_formal_name": "Mass Effect 3"
+    },
+    {
+      "game_title": "Mirrors Edge",
+      "game_series_name": "Mirros Edge",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Mirrors_Edge/default.webm",
+      "game_still_path": "StartScreens/Mirrors_Edge/default.jpg",
+      "game_formal_name": "Mirror's Edge",
+      "game_background_color": "#fff"
+    },
+    {
+      "game_title": "Xenoblade",
+      "game_series_name": "Xenoblade",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Xenoblade/default.webm",
+      "game_still_path": "StartScreens/Xenoblade/default.jpg",
+      "game_formal_name": "Xenoblade",
+      "game_background_color": "#DAF1FF"
+    },
+    {
+      "game_title": "Ori and the Blind Forest",
+      "game_series_name": "Ori and the Blind Forest",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Ori_and_the_Blind_Forest/default.webm",
+      "game_still_path": "StartScreens/Ori_and_the_Blind_Forest/default.jpg",
+      "game_formal_name": "Ori and the Blind Forest",
+      "game_background_color": "#DAF1FF"
+    },
+    {
+      "game_title": "Gears of War",
+      "game_series_name": "Gears of War",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Gears_of_War/default.webm",
+      "game_still_path": "StartScreens/Gears_of_War/default.jpg",
+      "game_formal_name": "Gears of War"
+    },
+    {
+      "game_title": "Gears of War 2",
+      "game_series_name": "Gears of War",
+      "game_series_sequence": "2",
+      "game_video_path": "StartScreens/Gears_of_War_2/default.webm",
+      "game_still_path": "StartScreens/Gears_of_War_2/default.jpg",
+      "game_formal_name": "Gears of War 2"
+    },
+    {
+      "game_title": "Gears of War 3",
+      "game_series_name": "Gears of War",
+      "game_series_sequence": "3",
+      "game_video_path": "StartScreens/Gears_of_War_3/default.webm",
+      "game_still_path": "StartScreens/Gears_of_War_3/default.jpg",
+      "game_formal_name": "Gears of War 3"
     }
   ]
 }

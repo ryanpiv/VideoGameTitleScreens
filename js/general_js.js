@@ -100,3 +100,6 @@ $(document).on('keyup', '.input-search', function(){
   $('#Container > .mix > div[data-game-formal-name*="'+searchTerm.toUpperCase()+'"]').parent().show();
 });
 
+function settingsClick() {
+  $('.settings').css('display', 'block');
+}

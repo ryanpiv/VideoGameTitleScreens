@@ -105,3 +105,14 @@ body{
 #Container .mix{
   display: none;
 }
+.modalcover{
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  opacity: 0.0;
+  z-index = 10000;
+  background-color: #000000;
+  display: none;
+}

@@ -32,8 +32,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="">Settings</a></li>
-        <li><a href="">About</a></li>
+      	<li><a id='btnSettings' onclick='settingsClick()'>Settings</a></li>
+        <li><a id='btnAbout'>About</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </nav>
@@ -41,13 +41,20 @@
   <div class="container">
   	<div id="games-container">
   		<div class="row">
-	      <div class="col-lg-offset-3 col-lg-6 div-search">
+	      <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 div-search">
 	        <h1></h1>
 	        <input class="input-search" type="text" placeholder="Search">
 	      </div>
 	    </div>
 	    <div id="games-row" class="games-row"></div>
   	</div>
+  </div>
+  <div class='modalcover settings'>
+  	<form action="">
+  		<input type="radio" name="Quality" value="Default">Default<br>
+		<input type="radio" name="Quality" value="720p">720p<br>
+		<input type="radio" name="Quality" value="1080p">1080p
+	</form>
   </div>
 </body>
 </html>
