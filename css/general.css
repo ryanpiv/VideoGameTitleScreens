@@ -6,6 +6,7 @@ body{
 
   /*background-color: #067dd8;*/
   background-color: #1D1D1D;
+  font-family: 'Abel', sans-serif;
 }
 a{
   pointer:cursur;
@@ -19,6 +20,7 @@ a{
   padding-left: 0 !important;
   padding-right: 0 !important;
   margin-left: 0 !important;
+  margin-top: 0 !important;
 }
 #Container > div{
   padding-right:0 !important;
@@ -32,6 +34,27 @@ a{
 .navbar-brand .nav .navbar-header .navbar{
   /*background-color: #595f64;*/
   color: #C5CDD3;
+}
+.ui-hamburger {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 99;
+}
+.ui-hamburger svg {
+  position: absolute;
+  width: 20px;
+  height: 17px;
+  top: 50%;
+  left: 50%;
+  fill: #a77915;
+}
+.ui-hamburger:hover{
+  background: #fff;
 }
 .container{
   width:94%;
@@ -80,7 +103,7 @@ a{
   height:100%;
 }
 .hover-class{
-  opacity:0.4;
+  opacity:0.2;
   transition:opacity .3s;
   cursor: pointer;
 }
@@ -100,7 +123,9 @@ a{
   transition:opacity .5s;
 }*/
 .div-search{
-  height:15%
+  height:15%;
+  margin-top:15px;
+  text-align: center;
 }
 .input-search{
   border:none;
@@ -110,10 +135,13 @@ a{
   font: 600 30px/30px OpenSans,sans-serif;
   outline: 0;
   color: #969696;
+  margin-bottom:2%;
 }
 .search-row{
   margin-left:0 !important;
   margin-right:0 !important;
+  display: none;
+  margin-top: 2%;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     opacity: .3 !important;
@@ -131,4 +159,27 @@ a{
   z-index = 10000;
   background-color: #000000;
   display: none;
+}
+.btn-sort{
+  background-color: transparent;
+  border: none;
+  color:#fff;
+}
+.btn-sort:hover{
+  background-color: #fff;
+  color:#0EA4BD;
+}
+.info-panel{
+  position: relative;
+  float: right;
+}
+.info-panel > a {
+  color:#fff;
+  display: block;
+  margin-right:10px;
+  text-decoration: none;
+}
+a:hover{
+  cursor: pointer;
+  color:#ccc;
 }

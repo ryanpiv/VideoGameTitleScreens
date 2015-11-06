@@ -1,3 +1,7 @@
+var clicked = 0;
+//controls navbar slideDown when clicked to keep position
+//set to 1 to keep click event
+
 $(document).ready(function()
 {
   $.getJSON('screens.json', function(data)
@@ -71,7 +75,6 @@ $(document).ready(function()
     $('#Container .mix').each(function(){
       $gamesDivArray.push(this);
     });
-
   });
 });
 
@@ -88,6 +91,10 @@ function raiseOpacity(elem) {
 }
 //https://jsfiddle.net/ktf6rtwd/3/
 
+function settingsClick() {
+  $('.settings').css('display', 'block');
+}
+
 //detect key input on search
 $(document).on('keyup', '.input-search', function(){
   //if($('.mix').attr
@@ -100,6 +107,30 @@ $(document).on('keyup', '.input-search', function(){
   $('#Container > .mix > div[data-game-formal-name*="'+searchTerm.toUpperCase()+'"]').parent().show();
 });
 
-function settingsClick() {
-  $('.settings').css('display', 'block');
-}
+$(document).on('mouseenter', '.ui-hamburger', function(){
+  $('.search-row').stop().slideDown(function(){
+    $('.search-row').css('display', 'block');
+  });
+});
+
+$(document).on('mouseleave', '.search-row', function(){
+  if(clicked == 0){
+    $('.search-row').stop().slideUp(function(){
+      $('.search-row').css('display', 'none');
+    });
+  }
+});
+
+$(document).on('click', '.ui-hamburger', function(){
+  if(clicked == 0){
+    $('.search-row').stop().slideDown(function(){
+      $('.search-row').css('display', 'block');
+    });
+  } else {
+    $('.search-row').stop().slideUp(function(){
+      $('.search-row').css('display', 'none');
+    });
+  }
+  
+  clicked = 1;
+});

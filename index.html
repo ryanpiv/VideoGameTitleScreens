@@ -3,6 +3,7 @@
   <link rel="shortcut icon" href="Images/fav.png" />
   <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
   <link href='http://fonts.googleapis.com/css?family=Poiret+One|Quicksand|Cantarell|Open+Sans:400,300,600' rel='stylesheet' type='text/css' />
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <link type="text/css" rel="stylesheet" href="css/general.css" />
 
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -12,6 +13,7 @@
 
 </head>
 <body>
+<!--
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -25,7 +27,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-left">
-        <!-- <li><a href=""></a></li> -->
+        <li><a href=""></a></li>
         <button class="sort btn-lg" data-sort="myorder:asc">Ascending Order</button>
 		<button class="sort btn-lg" data-sort="myorder:desc">Descending Order</button>
 		<button class="sort btn-lg" data-sort="myorder:none">None</button>
@@ -36,7 +38,18 @@
         <li><a id='btnAbout'>About</a></li>
       </ul>
     </div><!--/.nav-collapse -->
-  </nav>
+<!--  </nav>
+-->
+  
+  <div class="ui-hamburger">
+  	<svg x="0px" y="0px" width="19.958px" height="16.958px" viewBox="0 0 19.958 16.958" enable-background="new 0 0 19.958 16.958" xml:space="preserve" style="height: 18px; visibility: inherit; opacity: 1; transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);">
+	  <g>
+	    <rect width="19.958" height="2.958"></rect>
+	    <rect y="7" width="19.958" height="2.958"></rect>
+	    <rect y="14" width="19.958" height="2.958" ></rect>
+	  </g>
+	</svg>
+  </div>
 
   <div class="container">
   	<div id="games-container">
@@ -44,7 +57,14 @@
 	      <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 div-search">
 	        <h1></h1>
 	        <input class="input-search" type="text" placeholder="Search">
+	        <button class="sort btn-sort btn-lg" data-sort="myorder:asc">Ascending Order</button>
+			<button class="sort btn-sort btn-lg" data-sort="myorder:desc">Descending Order</button>
 	      </div>
+
+	      <div class="info-panel">
+		  	<a class="info-about">About</a>
+		  	<a class="info-settings">Settings</a>
+		  </div>
 	    </div>
 	    <div id="games-row" class="games-row"></div>
   	</div>
