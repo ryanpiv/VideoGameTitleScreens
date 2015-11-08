@@ -2,11 +2,16 @@
 <head>
   <link rel="shortcut icon" href="Images/fav.png" />
   <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
   <link href='http://fonts.googleapis.com/css?family=Poiret+One|Quicksand|Cantarell|Open+Sans:400,300,600' rel='stylesheet' type='text/css' />
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <link type="text/css" rel="stylesheet" href="css/general.css" />
 
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
   <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
   <script src="mixitup-master/src/jquery.mixitup.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
   <script src="js/general_js.js" ></script>
@@ -42,7 +47,7 @@
 -->
   
   <div class="ui-hamburger">
-  	<svg x="0px" y="0px" width="19.958px" height="16.958px" viewBox="0 0 19.958 16.958" enable-background="new 0 0 19.958 16.958" xml:space="preserve" style="height: 18px; visibility: inherit; opacity: 1; transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);">
+  	<svg class='ui-hamburger-svg' x="0px" y="0px" width="19.958px" height="16.958px" viewBox="0 0 19.958 16.958" enable-background="new 0 0 19.958 16.958" xml:space="preserve" style="height: 18px; visibility: inherit; opacity: 1; transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);">
 	  <g>
 	    <rect width="19.958" height="2.958"></rect>
 	    <rect y="7" width="19.958" height="2.958"></rect>
@@ -56,28 +61,74 @@
   <div class="pulse-three"></div>
 
   <div class="container">
-  	<div id="games-container">
-  		<div class="row search-row">
-	      <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8c col-xs-offset-2 col-xs-8 div-search">
-	        <h1></h1>
-	        <input class="input-search" type="text" placeholder="Search">
-	        <button class="sort btn-sort btn-lg sort-active" data-sort="myorder:asc">Ascending Order</button>
-			<button class="sort btn-sort btn-lg" data-sort="myorder:desc">Descending Order</button>
-	      </div>
-
-	      <div class="info-panel">
-		  	<a class="info-about">About</a>
-		  	<a class="info-settings">Settings</a>
-		  </div>
+	<div class="search-row">
+  	  <div class="row">
+	    <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8c col-xs-offset-2 col-xs-8 div-search">
+	      <input class="input-search" type="text" placeholder="Search">
 	    </div>
-	    <div id="games-row" class="games-row"></div>
-  	</div>
+      </div>
+
+	  <div class="row">
+	    <div class="col-lg-offset-5 col-lg-1 com-mdoffset-5 col-md-1 col-sm-offset-5 col-sm-1 col-xs-offset-5 col-xs-1">
+		  <button class="sort btn-sort btn-lg sort-active" data-sort="myorder:asc">Ascending Order</button>
+	    </div>
+	    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+	  	  <button class="sort btn-sort btn-lg" data-sort="myorder:desc">Descending Order</button>
+	    </div>
+	  </div>
+
+	  <div class="row info-panel">
+	    <div class="col-lg-offset-5 col-lg-1 com-mdoffset-5 col-md-1 col-sm-offset-5 col-sm-1 col-xs-offset-5 col-xs-1">
+	  	  <a class="info-about">About</a>
+	    </div>
+	    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+	  	  <a class="info-settings">Settings</a>
+	    </div>
+	  </div>
+    </div>
   </div>
-  <div class='modalcover settings'>
-  	<form action="">
-  		<input type="radio" name="Quality" value="Default">Default<br>
-		<input type="radio" name="Quality" value="720p">720p<br>
-		<input type="radio" name="Quality" value="1080p">1080p
+
+  <div class="container">
+    <div id="games-row" class="games-row"></div>
+  </div>
+
+  <div class='modal-cover settings'></div>
+
+  <div class='modal-close'>
+	<svg>
+	  <line x1="0" y1="0" x2="40" y2="40" />
+	  <line x1="40" y1="0" x2="0" y2="40" />
+	</svg>
+  </div>
+
+  <div class='modal-settings-form'>
+  	<form id='settings-form' class='settings-form' action="">
+  		<table class='settings-table'>
+  			<tr>
+  				<td>
+  					<input type="radio" name="Quality" value="Default">	
+  				</td>
+  				<td>
+  					<p>Default</p>
+  				</td>
+  			</tr>
+  			<tr>
+  				<td>
+  					<input type="radio" name="Quality" value="720p" checked>	
+  				</td>
+  				<td>
+  					<p>720p</p>
+  				</td>
+  			</tr>
+  			<tr>
+  				<td>
+  					<input type="radio" name="Quality" value="1080p">
+  				<td>
+  				<td>
+  					<p>1080p</p>
+  				</td>
+  			</tr>
+		</table>
 	</form>
   </div>
 </body>

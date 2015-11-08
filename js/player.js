@@ -43,8 +43,7 @@ window.onload = function(){
     console.log(loadedPercentage);  
   }); */
 
-  $('#video').play();
-  
+  $('#video').get(0).play();
 };
 
 function getParameterByName(name) {
@@ -53,10 +52,6 @@ function getParameterByName(name) {
     results = regex.exec(location.search);
   return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
-
-/*$(document).ready(function(){
-
-});*/
 
 $(document).ready(function(){
   

@@ -64,7 +64,7 @@ $(document).ready(function()
 
     $("#Container").mixItUp({
       load:{
-        sort: 'default:desc'
+        sort: 'myorder:asc'
       },
       selectors:{
         sort: '.sort'
@@ -106,13 +106,14 @@ $(document).on('keyup', '.input-search', function(){
   $("#Container > .mix > div").parent().hide(); 
   $('#Container > .mix > div[data-game-formal-name*="'+searchTerm.toUpperCase()+'"]').parent().show();
 });
+//end input search
 
+//hamburgler
 $(document).on('mouseenter', '.ui-hamburger', function(){
   $('.search-row').stop().slideDown(function(){
     $('.search-row').css('display', 'block');
   });
 });
-
 $(document).on('mouseleave', '.search-row', function(){
   if(clicked == 0){
     $('.search-row').stop().slideUp(function(){
@@ -120,7 +121,6 @@ $(document).on('mouseleave', '.search-row', function(){
     });
   }
 });
-
 $(document).on('click', '.ui-hamburger', function(){
   if(clicked == 0){
     $('.search-row').stop().slideDown(function(){
@@ -134,8 +134,26 @@ $(document).on('click', '.ui-hamburger', function(){
     });
   }
 });
+//end hamburgler
 
+//sorting
 $(document).on('click', '.btn-sort', function(){
   $('.btn-sort').removeClass('sort-active');
   $(this).addClass('sort-active');
 });
+//end sorting
+
+//settings
+$(document).on('click', '.modal-close', function(){
+  $('.modal-cover').fadeOut(300);
+  $('.modal-cover').fadeOut(300);
+  $('.modal-close').fadeOut(300);
+  clicked = 0;
+});
+$(document).on('click', '.info-settings', function(){
+  $('.modal-cover').fadeIn(300);
+  $('.modal-close').fadeIn(300);
+  $('.modal-settings-form').fadeIn(300);
+  clicked = 1;
+});
+//end settings
