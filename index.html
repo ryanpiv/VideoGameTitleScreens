@@ -18,6 +18,9 @@
 
 </head>
 <body>
+	<div id="loading">
+	  <img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
+	</div>
 <!--
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
@@ -131,5 +134,12 @@
 		</table>
 	</form>
   </div>
+
+  <script>
+  	$(window).load(function(){
+  		debugger;
+  		$('#loading').fadeOut('slow');
+  	});
+  </script>
 </body>
 </html>
