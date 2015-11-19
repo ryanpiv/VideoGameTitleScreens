@@ -11,7 +11,7 @@ $(document).ready(function()
     var count = 0;
     for(var i in data.games)
     {
-      output+= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mix" data-myorder="' + data.games[i].game_series_name + ' ' + data.games[i].game_series_sequence +'"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
+      output+= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix" data-myorder="' + data.games[i].game_series_name + ' ' + data.games[i].game_series_sequence +'"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
       output+= 'style="background-image:url(' + data.games[i].game_still_path + ')"';
       output+= ' data-game-title="' + data.games[i].game_title + '"';
       output+= ' data-game-series-name="' + data.games[i].game_series_name + '"';
@@ -20,7 +20,8 @@ $(document).ready(function()
       output+= ' data-game-background-color="' + data.games[i].game_background_color + '"';
       output+= ' data-game-formal-name="' + data.games[i].game_formal_name.toUpperCase() + '"';
       output+= ' data-game-audio-path="' + data.games[i].game_audio_path + '">';
-      output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
+      output+= ' data-game-youtube-link"' + data.games[i].game_youtube_link + '">'
+;      output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
 
       count+=3;
       if(count >= 12){
@@ -40,22 +41,28 @@ $(document).ready(function()
 
       if(typeof(Storage) !== 'undefined'){
         //code for local Storage
-        debugger;
         localStorage.setItem("title", mydata.attr('data-game-title'));
         localStorage.setItem("path", mydata.attr('data-game-path'));
         localStorage.setItem("bg_color", mydata.attr('data-game-background-color'));
         localStorage.setItem("audio_path", mydata.attr('data-game-audio-path'));
+        localStorage.setItem("youtube_link", mydata.attr('data-game-youtube-link'));
 
-        window.open('player.html', '_blank');
+        playerShow(myobj);
+
+        //window.open('player.html', '_blank');
       } else {
         //no web storage, begin query string
         myobj = {
           title: mydata.attr('data-game-title'),
           path: mydata.attr('data-game-path'),
           bg_color: mydata.attr('data-game-background-color'),
-          audio_path: mydata.attr('data-game-audio-path')
+          audio_path: mydata.attr('data-game-audio-path'),
+          youtube_link: mydata.attr('data-game-youtube-link')
         };
-        window.open('player.html'+'?'+$.param(myobj), '_blank');
+
+        playerShow(myobj);
+
+        //window.open('player.html'+'?'+$.param(myobj), '_blank');
       }
       //window.open(location.href='player.html/'+$.param(myobj));
       //location.href=$.param(myobj);
@@ -93,6 +100,12 @@ function raiseOpacity(elem) {
 
 function settingsClick() {
   $('.settings').css('display', 'block');
+}
+
+function playerShow(videoObj) {
+  $('.modal-cover').fadeIn(300);
+  $('.modal-close').fadeIn(300);
+
 }
 
 //detect key input on search
@@ -146,14 +159,20 @@ $(document).on('click', '.btn-sort', function(){
 //settings
 $(document).on('click', '.modal-close', function(){
   $('.modal-cover').fadeOut(300);
+  $('.modal-close').fadeOut(300);
+  $('.modal-settings').fadeOut(300);
+  clicked = 0;
+});
+$(document).on('click', '.modal-cover', function(){
   $('.modal-cover').fadeOut(300);
   $('.modal-close').fadeOut(300);
+  $('.modal-settings').fadeOut(300);
   clicked = 0;
 });
 $(document).on('click', '.info-settings', function(){
   $('.modal-cover').fadeIn(300);
   $('.modal-close').fadeIn(300);
-  $('.modal-settings-form').fadeIn(300);
+  $('.modal-settings').fadeIn(300);
   clicked = 1;
 });
 //end settings
