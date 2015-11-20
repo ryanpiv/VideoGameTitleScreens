@@ -112,7 +112,7 @@ function playerShow(videoObj) {
   } else {
     if_html += localStorage.getItem('youtube_link');
   }
-  if_html += "?autoplay=1&showinfo=0&controls=0 frameborder=0 allowfullscreen></iframe>";
+  if_html += "?autoplay=1&showinfo=0&controls=0&loop=1 frameborder=0 allowfullscreen></iframe>";
   $('.player-container').append(if_html);
   $('.player-container').fitVids();
 }
