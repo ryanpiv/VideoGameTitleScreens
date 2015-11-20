@@ -19,9 +19,9 @@ $(document).ready(function()
       output+= ' data-game-path="' + data.games[i].game_video_path + '"';
       output+= ' data-game-background-color="' + data.games[i].game_background_color + '"';
       output+= ' data-game-formal-name="' + data.games[i].game_formal_name.toUpperCase() + '"';
-      output+= ' data-game-audio-path="' + data.games[i].game_audio_path + '">';
-      output+= ' data-game-youtube-link"' + data.games[i].game_youtube_link + '">'
-;      output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
+      output+= ' data-game-audio-path="' + data.games[i].game_audio_path + '"';
+      output+= ' data-game-youtube-link="' + data.games[i].game_youtube_link + '">';
+      output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
 
       count+=3;
       if(count >= 12){
@@ -47,8 +47,7 @@ $(document).ready(function()
         localStorage.setItem("audio_path", mydata.attr('data-game-audio-path'));
         localStorage.setItem("youtube_link", mydata.attr('data-game-youtube-link'));
 
-        playerShow(myobj);
-
+        playerShow(null);
         //window.open('player.html', '_blank');
       } else {
         //no web storage, begin query string
@@ -105,7 +104,17 @@ function settingsClick() {
 function playerShow(videoObj) {
   $('.modal-cover').fadeIn(300);
   $('.modal-close').fadeIn(300);
+  $('.modal-player').fadeIn(300);
+  var if_html = "<iframe width='560' height='315' src=";
 
+  if(videoObj != null){
+    if_html += videoObj.youtube_link;
+  } else {
+    if_html += localStorage.getItem('youtube_link');
+  }
+  if_html += "?autoplay=1&showinfo=0&controls=0 frameborder=0 allowfullscreen></iframe>";
+  $('.player-container').append(if_html);
+  $('.player-container').fitVids();
 }
 
 //detect key input on search
@@ -161,12 +170,15 @@ $(document).on('click', '.modal-close', function(){
   $('.modal-cover').fadeOut(300);
   $('.modal-close').fadeOut(300);
   $('.modal-settings').fadeOut(300);
+  $('.modal-player').fadeOut(300);
+  $('.player-container').children().remove()
   clicked = 0;
 });
 $(document).on('click', '.modal-cover', function(){
   $('.modal-cover').fadeOut(300);
   $('.modal-close').fadeOut(300);
   $('.modal-settings').fadeOut(300);
+  $('.modal-player').fadeOut(300);
   clicked = 0;
 });
 $(document).on('click', '.info-settings', function(){
