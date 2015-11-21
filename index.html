@@ -1,22 +1,24 @@
 <html>
 <head>
   <link rel="shortcut icon" href="Images/fav.png" />
+
   <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
 
   <link href='http://fonts.googleapis.com/css?family=Poiret+One|Quicksand|Cantarell|Open+Sans:400,300,600' rel='stylesheet' type='text/css' />
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-  <link type="text/css" rel="stylesheet" href="css/general.css" />
 
+  <link type="text/css" rel="stylesheet" href="css/general.css" />
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="css/pace.css">
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
+  <script src="js/pace.min.js"></script>
   <script src="mixitup-master/src/jquery.mixitup.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
   <script src="js/general_js.js" ></script>
   <script src="js/FitVids.js-master/jquery.fitvids.js"></script>
-  <script src="js/youtube.js"></script>
 
 </head>
 <body>
@@ -98,7 +100,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div id="container-games" class="container">
     <div id="games-row" class="games-row"></div>
   </div>
 
@@ -106,9 +108,25 @@
 
   <div class='modal-player container'>
 	<div class='row'>
-		<div class='col-lg-offset-1 col-lg-10 player-container'>
+		<div class='col-lg-12 player-container'>
 		</div>
 	</div>
+  </div>
+
+  <div class="modal-about container">
+  	<div class="row">
+  		<div class="col-lg-offset-3 col-lg-6">
+  			<p>
+  				Credit goes to the Halo series for making me aware of how much I loved to just let title sequences for video game titles play.  By the time Halo 3 rolled around, I had become fully aware of how important these screens really are to the atomosphere of a game.  They're the first impression the player has from the development team.  It damn well be good.  And they are.  
+  				<br />
+  				<br />
+  				I created this site for those of us who want to experience they're favorite title screens again and again without the hastle of starting the game.  Here you can enjoy the beginnings of your favorite games with the click of your mouse.
+  				<br />
+  				<br />
+  				I'm really glad you could make it to my site.  My name's Ryan and I'm very passionate about video games, music and development.  To me it was a no brainer to combine all three into something I love.  I'm currently attempting to prove myself to the rest of the web dev world with projects such as this!  You can openly contribute to this project <a target="_blank" href="https://github.com/ryanpiv/VideoGameTitleScreens">on Github</a>.  I'm currently in massive need of a content aggregation system and migration to other storage needs.
+  			</p>
+  		</div>
+  	</div>
   </div>
 
   <div class="modal-settings container">
@@ -130,7 +148,7 @@
 
   	<div class='row'>
 	  	<div class='col-lg-offset-4 col-lg-2'>
-			Preferred Display Quality:
+			Display Quality:
 		</div>
 		<div class='col-lg-1'>
 			<input class='settings-radio' type="radio" name="settings-quality" value="480p"><br>
@@ -145,6 +163,40 @@
 			<p class='settings-radio-desc'>Max Available</p>
 		</div>
 	</div>
+
+	<legend class='settings-legend'></legend>
+
+	<div class="row">
+		<div class='col-lg-offset-4 col-lg-2'>
+			Content Delivery Type (when available):
+		</div>
+		<div class='col-lg-1'>
+			<input class='settings-radio' type="radio" name="settings-content-type" value="Youtube" checked><br>
+			<input class='settings-radio' type="radio" name="settings-content-type" value="Webm"><br>
+		</div>
+		<div class='col-lg-1'>
+			<p class='settings-radio-desc'>Youtube</p><br>
+			<p class='settings-radio-desc'>Webm</p>
+		</div>
+	</div>
+
+	<legend class='settings-legend'></legend>
+
+	<div class="row">
+		<div class='col-lg-offset-4 col-lg-2'>
+			Video Size:
+		</div>
+		<div class='col-lg-1'>
+			<input class='settings-radio' type="radio" name="settings-video-size" value="small"><br>
+			<input class='settings-radio' type="radio" name="settings-video-size" value="medium"><br>
+			<input class='settings-radio' type="radio" name="settings-video-size" value="large" checked><br>
+		</div>
+		<div class='col-lg-1'>
+			<p class='settings-radio-desc'>Small</p><br>
+			<p class='settings-radio-desc'>Medium</p><br>
+			<p class='settings-radio-desc'>Large</p>
+		</div>
+	</div>
   </div>
 
   <div class='modal-close'>
@@ -156,7 +208,11 @@
 
   <script>
   	$(window).bind('load', function(){
+  		$("#Container-mix-games").css('display', 'none');
   		$('#loading').fadeOut('slow');
+  	});
+  	Pace.on("done", function () {
+  		$("#Container-mix-games").css('display', 'block');
   	});
   </script>
 </body>

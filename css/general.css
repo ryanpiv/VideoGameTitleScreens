@@ -11,6 +11,10 @@ body{
 a{
   pointer:cursur;
 }
+.stop-scrolling{
+  height: 100%;
+  overflow: hidden;
+}
 #loading{
   width: 100%;
   height: 100%;
@@ -42,7 +46,7 @@ a{
   margin-left: 0 !important;
   margin-top: 0 !important;
 }
-#Container > div{
+#Container-mix > div{
   padding-right:0 !important;
   padding-left:0 !important;
 }
@@ -71,19 +75,27 @@ a{
   display:block;
   margin:5px 0;
 }
+.ui-hamburger:hover span{
+  cursor: pointer;
+  background: #fff;
+}
+.ui-hamburger span:hover{
+  cursor: pointer;
+  background: #fff;
+}
 .pulse{
   animation-name: pulse;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: 3;
 
   -webkit-animation: pulse;
-  -webkit-animation-duration: 4s;
+  -webkit-animation-duration: 3s;
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: 3;
 
   -moz-animation: pulse;
-  -moz-animation-duration: 4s;
+  -moz-animation-duration: 3s;
   -moz-animation-timing-function: linear;
   -moz-animation-iteration-count: 3;
 }
@@ -244,7 +256,7 @@ a{
 ::-webkit-input-placeholder { /* WebKit browsers */
     opacity: .3 !important;
 }
-#Container .mix{
+#Container-mix .mix{
   display: none;
 }
 .modal-cover{
@@ -306,7 +318,7 @@ a:hover{
   cursor: pointer;
   color:#fff;
 }
-.modal-settings{
+.modal-settings, .modal-about{
   display: none;
   z-index: 5005;
   position: fixed;

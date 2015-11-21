@@ -69,7 +69,9 @@
       "game_audio_path": "StartScreens/Halo_5/default.ogg",
       "game_still_path": "StartScreens/Halo_5/default.jpg",
       "game_formal_name": "Halo 5: Guardians",
-      "game_youtube_link": "https://www.youtube.com/embed/ViCqbZ4gqIg"
+      "game_youtube_link": "ViCqbZ4gqIg",
+      "game_youtube_start_time": "24",
+      "game_youtube_end_time": ""
     },
     {
       "game_title": "Halo Wars",
@@ -250,7 +252,9 @@
       "game_series_sequence": "1",
       "game_video_path": "StartScreens/Mass_Effect/default.webm",
       "game_still_path": "StartScreens/Mass_Effect/default.jpg",
-      "game_formal_name": "Mass Effect"
+      "game_formal_name": "Mass Effect",
+      "game_youtube_link": "Q_JVEXDrJYg",
+      "game_youtube_end_time": "310"
     },
     {
       "game_title": "Mass Effect",
@@ -309,7 +313,9 @@
       "game_series_sequence": "2",
       "game_video_path": "StartScreens/Gears_of_War_2/default.webm",
       "game_still_path": "StartScreens/Gears_of_War_2/default.jpg",
-      "game_formal_name": "Gears of War 2"
+      "game_formal_name": "Gears of War 2",
+      "game_youtube_link": "BpbkIQBr63w",
+      "game_youtube_start_time": "21"
     },
     {
       "game_title": "Gears of War 3",
@@ -317,7 +323,9 @@
       "game_series_sequence": "3",
       "game_video_path": "StartScreens/Gears_of_War_3/default.webm",
       "game_still_path": "StartScreens/Gears_of_War_3/default.jpg",
-      "game_formal_name": "Gears of War 3"
+      "game_formal_name": "Gears of War 3",
+      "game_youtube_link": "9SmYsU0R8ko",
+      "game_youtube_start_time": "26"
     }
   ]
 }
