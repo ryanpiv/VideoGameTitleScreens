@@ -8,6 +8,60 @@ body{
   background-color: #1D1D1D;
   font-family: 'Abel', sans-serif;
 }
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+  body, .container{
+    font-size:22px;
+  }
+  .settings-legend{
+    width:90%;
+    margin-left:5%;
+  }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+  body, .container{
+    font-size:22px;
+  }
+  .settings-legend{
+    width:90%;
+    margin-left:5%;
+  }
+}
+
+/* Small Devices, Tablets -sm*/
+@media only screen and (min-width : 768px) {
+  body, .container{
+    font-size:20px;
+  }
+  .settings-legend{
+    width:75%;
+    margin-left:12.5%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  body, .container{
+    font-size:18px;
+  }
+  .settings-legend{
+    width:60%;
+    margin-left:20%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .settings-legend{
+    width:40%;
+    margin-left:30%;
+    /*remaining width is 60% so we do half of 60% to be 30% on each side*/
+  }
+}
 a{
   pointer:cursur;
 }
@@ -323,10 +377,9 @@ a:hover{
   z-index: 5005;
   position: fixed;
   color:white;
-  top:30%;
+  top:15%;
   right:0;
   text-align: center;
-  font-size:18px;
 }
 .settings-radio{
   float:right;
@@ -334,10 +387,6 @@ a:hover{
 .settings-radio-desc{
   float:left;
   margin:0;
-}
-.settings-legend{
-  width:40%;
-  margin-left:30%;
 }
 .modal-player{
   display: none;
@@ -348,6 +397,16 @@ a:hover{
 }
 iframe:hover{
   cursor: pointer;
+}
+.iframe-small{
+  width:80% !important;
+  height:80% !important;
+  left:10% !important;
+}
+.video-small{
+  width:80% !important;
+  height: 80% !important;
+  margin-left: 10% !important;
 }
 
 /*working on centering the table*/ 

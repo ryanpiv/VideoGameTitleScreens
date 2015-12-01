@@ -1,16 +1,9 @@
 var clicked = 0;
 //controls navbar slideDown when clicked to keep position
 //set to 1 to keep click event
-var quality_type = 1;
-//controls youtube video quality when loading from a youtube source
-//0 = 360p/480p/lowest available
-//1 = 720p --default value
-//2 = 1080p
-//3 = 1440p/highest available
-var display_type = 0;
-//controls to decide if the video opens in a new tab or in the same window
-//0 = same window --default
-//1 = new tab
+
+//call to settings.js to set cookies if exists
+checkSettingsPageLoad();
 
 $(document).ready(function()
 {
@@ -18,7 +11,7 @@ $(document).ready(function()
   {
     //var output ='<div id="Container" class="hover-cont"><div class="row">';
     var output ='<div id="Container-mix" class="hover-cont">';
-    var count = 0;
+    //var count = 0;
     for(var i in data.games)
     {
       output+= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix" data-myorder="' + data.games[i].game_series_name + ' ' + data.games[i].game_series_sequence +'"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
@@ -31,21 +24,20 @@ $(document).ready(function()
       output+= ' data-game-formal-name="' + data.games[i].game_formal_name.toUpperCase() + '"';
       output+= ' data-game-audio-path="' + data.games[i].game_audio_path + '"';
       output+= ' data-game-youtube-link="' + data.games[i].game_youtube_link + '"';
-      output+= ' data-game-youtube-start-time="' + data.games[i].game_youtube_start_time + '">';
+      output+= ' data-game-youtube-start-time="' + data.games[i].game_youtube_start_time + '"';
+      output+= ' data-game-path-intro="' + data.games[i].game_video_path_intro + '">';
       output += '</div><div class="game-title hover-in">' + data.games[i].game_formal_name + '</div></div>';
 
-      count+=3;
-      if(count >= 12){
+      //count+=3;
+      //if(count >= 12){
         //output+='</div><div class="row">';
-        count = 0;
-      }
+        //count = 0;
+      //}
     }
     output += "</div>";
     $("#games-row").append(output);
   })
   .done(function(){
-    //may need to loop through and add css classes here
-    //for dom to detect
     $('.mix').click(function(){
       var mydata = $(this).children('.game-item');
       var myobj;
@@ -54,12 +46,13 @@ $(document).ready(function()
         //code for local Storage
         localStorage.setItem("title", mydata.attr('data-game-title'));
         localStorage.setItem("path", mydata.attr('data-game-path'));
+        localStorage.setItem("path_intro", mydata.attr('data-game-path-intro'));
         localStorage.setItem("bg_color", mydata.attr('data-game-background-color'));
         localStorage.setItem("audio_path", mydata.attr('data-game-audio-path'));
         localStorage.setItem("youtube_link", mydata.attr('data-game-youtube-link'));
         localStorage.setItem("youtube_start_time", mydata.attr('data-game-youtube-start-time'));
 
-        if(display_type == 0){
+        if(getCookie("display_type") == "0" || getCookie("display_type") == "undefined" || getCookie("display_type") == ""){
           //open in same window
           if(localStorage.getItem('youtube_link') != "undefined"){
             playerShow(null, 'iframe');
@@ -73,6 +66,8 @@ $(document).ready(function()
         } else {
           //open in new tab
           if(localStorage.getItem('youtube_link') != "undefined"){
+            window.open('player.html', '_blank');
+          } else if(localStorage.getItem('path') != null || localStorage.getItem('path') != ""){
             window.open('player.html', '_blank');
           } else {
             alert("Error: No video available");
@@ -89,9 +84,11 @@ $(document).ready(function()
           youtube_link: mydata.attr('data-game-youtube-link'),
           youtube_start_time: mydata.attr('data-game-youtube-start-time')
         };
-        if(display_type == 0){
+        if(getCookie("display_type") == "0"){
           //open in same window
           if(myobj.youtube_link != null || myobj.youtube_link != ""){
+            playerShow(myobj);
+          } else if (myobj.path != null || myobj.path != "") {
             playerShow(myobj);
           } else {
             alert("Error: No video available");
@@ -100,8 +97,10 @@ $(document).ready(function()
         } else {
           //open in new tab
           if(myobj.youtube_link != null || myobj.youtube_link != ""){
-            window.open('player.html'+'?'+$.param(myobj), '_blank');
-          } else{
+            window.open('player.html'+'?' + $.param(myobj), '_blank');
+          } else if(myobj.path != null || myobj.path != "") {
+            window.open('player.html' + '?' + $.param(myobj), '_blank');
+          } else {
             alert("Error: No video available");
             return;
           }
@@ -124,6 +123,32 @@ $(document).ready(function()
     var $gamesDivArray = [];
     $('#Container-mix .mix').each(function(){
       $gamesDivArray.push(this);
+    });
+
+    $('input[type=radio][name=settings-video-size]').change(function() {
+      //determine how big the video should be
+      switch(this.value){
+        case '0':
+          setCookie("player_size", "0");
+          break;
+        case '1':
+          setCookie("player_size", "1");
+          break;
+        case '2':
+          setCookie("player_size", "2");
+          //need to write code for full screen still
+          break;
+      }
+    });
+    $('input[type=radio][name=settings-tab]').change(function() {
+      switch(this.value){
+        case "0":
+          setCookie("display_type", "0");
+          break;
+        case "1":
+          setCookie("display_type", "1");
+          break;
+      }
     });
   });
 });
@@ -178,18 +203,37 @@ function iframe(videoObj){
   $('.player-container').append(if_html);
   $('.player-container').fitVids();
 
+  playerSize();
+
   Pace.restart();
 }
 
 function webm(videoObj){
-  var wm_html = '<video style="width:100%; height:100%" id="video" autobuffer autoplay loop><source src="';
+  var wm_html = '<video style="width:100%; height:100%"';
 
   if(videoObj != null){
+    if(videoObj.path_intro != null || videoObj.path_intro != "" || videoObj.path_intro != "undefined"){
+      wm_html += 'id="video_intro" autobuffer autoplay><source src="';
+      wm_html += videoObj.path_intro;
+      wm_html += '" type="video/webm"></video>';
+      wm_html += '<video style="width:100%; height:100%; display:none" id="video" autobuffer loop><source src="';
+    } else {
+      wm_html += '<video style="width:100%; height:100%;" id="video" autobuffer loop><source src="';
+    }
     wm_html += videoObj.path;
     wm_html += '" type="video/webm"></video>';
     wm_html += '<audio style="display:none" preload="auto" autoplay="" loop="" controls=""><source src="';
     wm_html += videoObj.audio_path + '" type="audio/mpeg"></audio>';
   } else {
+    if(localStorage.getItem('path_intro') !== "undefined"){
+      //localStorage.getItem('path_intro')
+      wm_html += 'id="video_intro" autobuffer autoplay onended="intro_ended()"><source src="';
+      wm_html += localStorage.getItem('path_intro');
+      wm_html += '" type="video/webm"></video>';
+      wm_html += '<video style="width:100%; height:100%; display:none" id="video" autobuffer loop><source src="';
+    } else {
+      wm_html += '<video style="width:100%; height:100%;" id="video" autobuffer autoplay loop><source src="';
+    }
     wm_html += localStorage.getItem('path');
     wm_html += '" type="video/webm"></video>';
     wm_html += '<audio style="display:none" preload="auto" autoplay="" loop="" controls=""><source src="';
@@ -197,11 +241,21 @@ function webm(videoObj){
   }
 
   $('.player-container').append(wm_html);
+
+  playerSize();
+
   Pace.restart();
 }
 
+function intro_ended(){
+  $('#video_intro').css('display','none');
+  $('#video').css('display', 'block');
+  $('#video').attr('autoplay');
+  $('#video').get(0).play();
+}
+
 function qualityType(){
-  switch(quality_type){
+  switch(getCookie("quality_type")){
     case 0:
       return "480p";
     case 1:
@@ -210,6 +264,29 @@ function qualityType(){
       return "1080p";
     case 3:
       return "1440p";
+  }
+}
+
+function playerSize(){
+  $('iframe').removeClass('iframe-small');
+  $('video').removeClass('video-small');
+
+  switch(getCookie("player_size")){
+    case "0":
+      $('video').addClass('video-small');
+      $('video').css('margin-top', ($('body').innerHeight() - $('video').height()) / 2 );
+      $('iframe').addClass('iframe-small');
+      $('iframe').css('top', ($('body').innerHeight() - $('iframe').height()) / 2 );
+      break;
+    case "1":
+      $('iframe').height($('body').height());
+      $('iframe').css('top', $('body').innerHeight() - $('iframe').height());
+      $('video').height($('body').height());
+      $('video').css('top', $('body').innerHeight() - $('video').height());
+      break;
+    case "2": 
+      //need to manipulate youtube URL to be full screen
+      break;
   }
 }
 
@@ -225,6 +302,27 @@ $(document).on('keyup', '.input-search', function(){
   $('#Container-mix > .mix > div[data-game-formal-name*="'+searchTerm.toUpperCase()+'"]').parent().show();
 });
 //end input search
+
+//detect escape key press
+$(document).on('keyup',function(evt) {
+    if (evt.keyCode == 27) {
+       //exit all modals
+      clicked = 0;
+      $('.search-row').stop().slideUp(function(){
+        $('.search-row').css('display', 'none');
+      });
+      $('.modal-cover').fadeOut(300);
+      $('.modal-close').fadeOut(300);
+      $('.modal-settings').fadeOut(300);
+      $('.modal-player').fadeOut(300);
+      $('.modal-about').fadeOut(300);
+      $('.player-container').children().remove()
+      clicked = 0;
+
+      $('body').removeClass('stop-scrolling');
+    }
+});
+//end escape key press
 
 //hamburgler
 $(document).on('mouseenter', '.ui-hamburger', function(){
@@ -286,6 +384,7 @@ $(document).on('click', '.info-settings', function(){
   $('.modal-cover').fadeIn(300);
   $('.modal-close').fadeIn(300);
   $('.modal-settings').fadeIn(300);
+  checkSettingsPageLoad();
   clicked = 1;
 });
 //end settings
@@ -297,3 +396,18 @@ $(document).on('click', '.info-about', function(){
   clicked = 1;
 });
 //end about
+
+$(window).resize(function(){
+  if(getCookie("player_size") == "0"){
+    $('iframe').css('top', ($('body').innerHeight() - $('iframe').height()) / 2 );
+  } else if(getCookie("player_size") == "1"){
+    $('iframe').css('top', $('body').innerHeight() - $('iframe').height());
+  }
+
+  if(getCookie("player_size") == "0"){
+    $('video').css('top', ($('body').innerHeight() - $('iframe').height()) / 2 );
+  } else if(getCookie("player_size") == "1"){
+    $('video').css('top', $('body').innerHeight() - $('iframe').height());
+  }
+});
+

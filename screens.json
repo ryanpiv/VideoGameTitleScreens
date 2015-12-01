@@ -116,7 +116,8 @@
       "game_video_path": "StartScreens/Metroid_Prime/default.webm",
       "game_audio_path": "StartScreens/Metroid_Prime/default.ogg",
       "game_still_path": "StartScreens/Metroid_Prime/default.jpg",
-      "game_formal_name": "Metroid Prime"
+      "game_formal_name": "Metroid Prime",
+      "game_youtube_link": "RGxO7z4lHOc"
     },
     {
       "game_title": "Metroid Prime 2",
@@ -180,7 +181,8 @@
       "game_series_sequence": "5",
       "game_video_path": "StartScreens/WoW_MoP/default.webm",
       "game_still_path": "StartScreens/WoW_MoP/default.jpg",
-      "game_formal_name": "World of Warcraft: Mists of Pandaria"
+      "game_formal_name": "World of Warcraft: Mists of Pandaria",
+      "game_youtube_link": "1bmWv_VZD3s"
     },
     {
       "game_title": "Warlords of Draenor",
@@ -188,7 +190,8 @@
       "game_series_sequence": "6",
       "game_video_path": "StartScreens/WoW_WoD/default.webm",
       "game_still_path": "StartScreens/WoW_WoD/default.jpg",
-      "game_formal_name": "World of Warcraft: Warlords of Draenor"
+      "game_formal_name": "World of Warcraft: Warlords of Draenor",
+      "game_youtube_link": "YOovc5OtCs0"
     },
     {
       "game_title": "Pikmin",
@@ -228,7 +231,8 @@
       "game_series_sequence": "1",
       "game_video_path": "StartScreens/SSB/default.webm",
       "game_still_path": "StartScreens/SSB/default.jpg",
-      "game_formal_name": "Super Smash Bros."
+      "game_formal_name": "Super Smash Bros.",
+      "game_youtube_link": "GlsJOmrrnoA"
     },
     {
       "game_title": "Melee",
@@ -253,8 +257,7 @@
       "game_video_path": "StartScreens/Mass_Effect/default.webm",
       "game_still_path": "StartScreens/Mass_Effect/default.jpg",
       "game_formal_name": "Mass Effect",
-      "game_youtube_link": "Q_JVEXDrJYg",
-      "game_youtube_end_time": "310"
+      "game_youtube_link": "MnBOtLsN43M"
     },
     {
       "game_title": "Mass Effect",
@@ -270,7 +273,8 @@
       "game_series_sequence": "3",
       "game_video_path": "StartScreens/Mass_Effect_3/default.webm",
       "game_still_path": "StartScreens/Mass_Effect_3/default.jpg",
-      "game_formal_name": "Mass Effect 3"
+      "game_formal_name": "Mass Effect 3",
+      "game_youtube_link": "mr9Hv0QvtV8"
     },
     {
       "game_title": "Mirrors Edge",
@@ -326,6 +330,15 @@
       "game_formal_name": "Gears of War 3",
       "game_youtube_link": "9SmYsU0R8ko",
       "game_youtube_start_time": "26"
+    },
+    {
+      "game_title": "Luigi's Mansion",
+      "game_series_name": "Luigi's Mansion",
+      "game_series_sequence": "1",
+      "game_video_path": "StartScreens/Luigis_Mansion/default.webm",
+      "game_still_path": "StartScreens/Luigis_Mansion/default.jpg",
+      "game_formal_name": "Luigi's Mansion",
+      "game_video_path_intro": "StartScreens/Luigis_Mansion/default_intro.webm"
     }
   ]
 }
