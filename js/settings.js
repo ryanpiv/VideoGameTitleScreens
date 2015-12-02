@@ -65,6 +65,12 @@ function rdoBtnCompare(rdoName){
 }
 
 function checkSettingsPageLoad (){
+	if(isMobile == true){
+	  if(getCookie("player_size") == "undefined" || getCookie("player_size") == ""){
+	    setCookie("player_size", "1");
+	  }
+	}
+
 	if(getCookie("player_size") == ""){
 	  setCookie("player_size", "0");
 	}

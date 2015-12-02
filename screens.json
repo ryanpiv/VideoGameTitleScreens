@@ -102,14 +102,6 @@
       "game_formal_name": "Halo 3: ODST"
     },
     {
-      "game_title": "The Master Chief Collection",
-      "game_series_name": "Halo",
-      "game_series_sequence": "8",
-      "game_video_path": "",
-      "game_still_path": "StartScreens/Halo_MCC/default.jpg",
-      "game_formal_name": "Halo: The Master Chief Collection"
-    },
-    {
       "game_title": "Metroid Prime",
       "game_series_name": "Metroid",
       "game_series_sequence": "1",
@@ -141,7 +133,9 @@
       "game_series_sequence": "1",
       "game_video_path": "StartScreens/The_Last_of_Us/default.webm",
       "game_still_path": "StartScreens/The_Last_of_Us/default.jpg",
-      "game_formal_name": "The Last of Us"
+      "game_formal_name": "The Last of Us",
+      "game_youtube_link": "xawVxdbFYBA",
+      "game_youtube_start_time": "12"
     },
     {
       "game_title": "World of Warcraft",
@@ -207,7 +201,10 @@
       "game_series_sequence": "2",
       "game_video_path": "StartScreens/Pikmin_2/default.webm",
       "game_still_path": "StartScreens/Pikmin_2/default.jpg",
-      "game_formal_name": "Pikmin 2"
+      "game_formal_name": "Pikmin 2",
+      "game_video_path_intro": "StartScreens/Pikmin_2/intro.webm",
+      "game_video_path": "StartScreens/Pikmin_2/default.webm",
+      "game_audio_path": "StartScreens/Pikmin_2/default.ogg"
     },
     {
       "game_title": "Pikmin 3",
@@ -240,7 +237,8 @@
       "game_series_sequence": "2",
       "game_video_path": "StartScreens/SSB_Melee/default.webm",
       "game_still_path": "StartScreens/SSB_Melee/default.jpg",
-      "game_formal_name": "Super Smash Bros. Melee"
+      "game_formal_name": "Super Smash Bros. Melee",
+      "game_youtube_link": "Qe7ll4HnnGE"
     },
     {
       "game_title": "Brawl",
@@ -265,7 +263,9 @@
       "game_series_sequence": "2",
       "game_video_path": "StartScreens/Mass_Effect_2/default.webm",
       "game_still_path": "StartScreens/Mass_Effect_2/default.jpg",
-      "game_formal_name": "Mass Effect 2"
+      "game_formal_name": "Mass Effect 2",
+      "game_youtube_link": "ZN3Qwfh9__0",
+      "game_youtube_start_time": "15"
     },
     {
       "game_title": "Mass Effect",
@@ -301,7 +301,8 @@
       "game_video_path": "StartScreens/Ori_and_the_Blind_Forest/default.webm",
       "game_still_path": "StartScreens/Ori_and_the_Blind_Forest/default.jpg",
       "game_formal_name": "Ori and the Blind Forest",
-      "game_background_color": "#DAF1FF"
+      "game_background_color": "#DAF1FF",
+      "game_youtube_link": "45WjgAfb7ug"
     },
     {
       "game_title": "Gears of War",

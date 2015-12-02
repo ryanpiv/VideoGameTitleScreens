@@ -13,22 +13,48 @@ body{
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
   body, .container{
-    font-size:22px;
+    font-size:26px;
   }
   .settings-legend{
     width:90%;
     margin-left:5%;
+  }
+  .search-row{
+    margin-top:20px;
+  }
+  .div-search{
+    margin-top:50px !important;
+  }
+  .info-panel{
+    margin-top:20px !important;
+    margin-bottom: 30px !important;
+  }
+  button{
+    font-size:26px !important;
   }
 }
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (min-width : 480px) {
   body, .container{
-    font-size:22px;
+    font-size:26px;
   }
   .settings-legend{
     width:90%;
     margin-left:5%;
+  }
+  .search-row{
+    margin-top: 20px;
+  }
+  .div-search{
+    margin-top:50px !important;
+  }
+  .info-panel{
+    margin-top:20px !important;
+    margin-bottom: 30px !important;
+  }
+  button{
+    font-size: 26px !important;
   }
 }
 
@@ -41,6 +67,19 @@ body{
     width:75%;
     margin-left:12.5%;
   }
+  .search-row{
+    margin-top:20px;
+  }
+  .div-search{
+    margin-top:50px !important;
+  }
+  .info-panel{
+    margin-top:20px !important;
+    margin-bottom: 30px !important;
+  }
+  button{
+    font-size:22px !important;
+  }
 }
 
 /* Medium Devices, Desktops */
@@ -52,6 +91,19 @@ body{
     width:60%;
     margin-left:20%;
   }
+  .search-row{
+    margin-top:20px;
+  }
+  .div-search{
+    margin-top:50px !important;
+  }
+  .info-panel{
+    margin-top:20px !important;
+    margin-bottom: 30px !important;
+  }
+  button{
+    font-size: 20px !important;
+  }
 }
 
 /* Large Devices, Wide Screens */
@@ -60,6 +112,19 @@ body{
     width:40%;
     margin-left:30%;
     /*remaining width is 60% so we do half of 60% to be 30% on each side*/
+  }
+  .search-row{
+    margin-top:20px;
+  }
+  .div-search{
+    margin-top:50px !important;
+  }
+  .info-panel{
+    margin-top:20px !important;
+    margin-bottom: 30px !important;
+  }
+  button{
+    font-size: 18px !important;
   }
 }
 a{
@@ -117,7 +182,7 @@ a{
   position: absolute;
   top: 10px;
   left: 10px;
-  height:16.958px;
+  height:17.958px;
   width:30%;
   background: transparent;
   cursor: pointer;
@@ -128,12 +193,9 @@ a{
   height:4px;
   display:block;
   margin:5px 0;
+  cursor: pointer;
 }
 .ui-hamburger:hover span{
-  cursor: pointer;
-  background: #fff;
-}
-.ui-hamburger span:hover{
   cursor: pointer;
   background: #fff;
 }
@@ -290,6 +352,7 @@ a{
 .div-search{
   margin-top:15px;
   text-align: center;
+  margin-bottom:20px;
 }
 .input-search{
   border:none;
@@ -357,6 +420,9 @@ a{
   background-color: #fff;
   color:#0EA4BD;
 }
+.sort-panel{
+  text-align: center;
+}
 button:focus {
   outline: 0;
 }
@@ -375,7 +441,9 @@ a:hover{
 .modal-settings, .modal-about{
   display: none;
   z-index: 5005;
-  position: fixed;
+  /*position: fixed;
+  temporary scroll fix*/
+  position: absolute !important;
   color:white;
   top:15%;
   right:0;
@@ -409,5 +477,50 @@ iframe:hover{
   margin-left: 10% !important;
 }
 
-/*working on centering the table*/ 
-
+.modal-container-playersize{
+  z-index:9999;
+  display: none;
+  position: fixed;
+  right:0;
+  bottom: 0;
+  margin-right: 30px;
+  margin-bottom:10px;
+}
+.modal-container-playersize > div{
+  display: inline-block;
+  width:60px;
+  height:40px;
+  border:4px solid white;
+  transition:all 0.2s ease;
+  opacity:0.4;
+}
+.modal-container-playersize > div:hover{ 
+  cursor: pointer;
+  opacity: 1;
+}
+.modal-playersize-small{
+  background-color:#ccc;
+}
+.modal-playersize-small:hover{
+  /*box-shadow: inset 0 0 0 5px #53a7ea;*/
+  box-shadow: inset 0 0 0 5px #fff;
+}
+.modal-playersize-large{
+  background-color: #ccc;
+  box-shadow: inset 0 0 0 5px #fff;
+}
+.modal-playersize-large:hover{
+  box-shadow: inset 0 0 0 0px #fff;
+}
+.modal-playersize-full{
+  background-color: #ccc;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+.modal-playersize-full:hover{
+  box-shadow: inset 0 0 0 0px #fff;
+  border:none;
+}
+video:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+}
