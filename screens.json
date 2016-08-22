@@ -34,6 +34,14 @@
       "game_formal_name": "Halo: Combat Evolved"
     },
     {
+      "game_title": "Halo: Combat Evolved Anniversary",
+      "game_series_name": "Halo",
+      "game_series_sequence": "7",
+      "game_still_path": "StartScreens/Halo_CE_Anniversary/default.jpg",
+      "game_youtube_link" : "aAZ44DD50U4",
+      "game_formal_name": "Halo: Combat Evolved Anniversary"
+    },
+    {
       "game_title": "Halo 2",
       "game_series_name": "Halo",
       "game_series_sequence": "2",
@@ -100,6 +108,14 @@
       "game_audio_path": "StartScreens/Halo_3_ODST/default.ogg",
       "game_still_path": "StartScreens/Halo_3_ODST/default.jpg",
       "game_formal_name": "Halo 3: ODST"
+    },
+    {
+      "game_title": "Master Chief Collection",
+      "game_series_name": "Halo",
+      "game_series_sequence": "8",
+      "game_youtube_link" : "hw2g9ZVIBWk",
+      "game_still_path": "StartScreens/Halo_MCC/default.jpg",
+      "game_formal_name": "Halo: The Master Chief Collection"
     },
     {
       "game_title": "Metroid Prime",
@@ -203,7 +219,6 @@
       "game_still_path": "StartScreens/Pikmin_2/default.jpg",
       "game_formal_name": "Pikmin 2",
       "game_video_path_intro": "StartScreens/Pikmin_2/intro.webm",
-      "game_video_path": "StartScreens/Pikmin_2/default.webm",
       "game_audio_path": "StartScreens/Pikmin_2/default.ogg"
     },
     {
@@ -340,6 +355,138 @@
       "game_still_path": "StartScreens/Luigis_Mansion/default.jpg",
       "game_formal_name": "Luigi's Mansion",
       "game_video_path_intro": "StartScreens/Luigis_Mansion/default_intro.webm"
+    },
+    {
+      "game_title": "Dragon Age: Inquisition",
+      "game_series_name": "Dragon Age",
+      "game_series_sequence": "4",
+      "game_formal_name": "Dragon Age: Inquisition",
+      "game_youtube_link": "6LZPo8MzizQ",
+      "game_still_path": "StartScreens/DA_Inquisition/default.jpg",
+      "game_youtube_start_time": "15"
+    },
+    {
+      "game_title": "Deus Ex: Human Revolution",
+      "game_series_name": "Deus Ex",
+      "game_series_sequence": "2",
+      "game_formal_name": "Deus Ex: Human Revolution",
+      "game_youtube_link": "GCiAS8joYhA",
+      "game_still_path": "StartScreens/Deus_Ex_Human_Revolution/default.jpg"
+    },
+    {
+      "game_title": "Dragon Age: Origins",
+      "game_series_name": "Dragon Age",
+      "game_series_sequence": "1",
+      "game_formal_name": "Dragon Age: Origins",
+      "game_youtube_link": "VbFTIO6OQZg",
+      "game_still_path": "StartScreens/DA_Origins/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "Metal Gear Solid 4: Guns of the Patriots",
+      "game_series_name": "Metal Gear",
+      "game_series_sequence": "4",
+      "game_formal_name": "Metal Gear Solid 4: Guns of the Patriots",
+      "game_youtube_link": "8ATzz3AhyH4",
+      "game_still_path": "StartScreens/Metal_Gear_Solid_4/default.jpg"
+    },
+    {
+      "game_title": "World of Warcraft: Legion",
+      "game_series_name": "World of Warcraft",
+      "game_series_sequence": "7",
+      "game_formal_name": "World of Warcraft: Legion",
+      "game_youtube_link": "aiRFbU3VoWc",
+      "game_still_path": "StartScreens/WoW_Legion/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "Half Life 2",
+      "game_series_name": "Half Life",
+      "game_series_sequence": "2",
+      "game_formal_name": "Half Life 2",
+      "game_youtube_link": "pveer0jDCmk",
+      "game_still_path": "StartScreens/Half_Life_2/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "The Witcher 2: Assassins of Kings",
+      "game_series_name": "The Witcher",
+      "game_series_sequence": "2",
+      "game_formal_name": "The Witcher 2: Assasins of Kings",
+      "game_youtube_link": "mHFOLqWgpEY",
+      "game_still_path": "StartScreens/The_Witcher_2/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "The Witcher 3: Wild Hunt",
+      "game_series_name": "The Witcher",
+      "game_series_sequence": "3",
+      "game_formal_name": "The Witcher 3: Wild Hunt",
+      "game_youtube_link": "XTkgqqPEP7U",
+      "game_still_path": "StartScreens/The_Witcher_3_Wild_Hunt/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "The Witcher 3: Blood and Wine",
+      "game_series_name": "The Witcher",
+      "game_series_sequence": "4",
+      "game_formal_name": "The Witcher 3: Blood and Wine",
+      "game_youtube_link": "qcbds6KrA4k",
+      "game_still_path": "StartScreens/The_Witcher_3_Blood_And_Wine/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "The Legend of Zelda: Ocarina of Time",
+      "game_series_name": "The Legend of Zelda",
+      "game_series_sequence": "2",
+      "game_formal_name": "The Legend of Zelda: Ocarina of Time",
+      "game_youtube_link": "g2wzMZzdNJA",
+      "game_still_path": "StartScreens/TLoZ_Ocarina/default.jpg",
+      "game_youtube_start_time": ""
+    },
+    {
+      "game_title": "The Legend of Zelda: Twilight Princess",
+      "game_series_name": "The Legend of Zelda",
+      "game_series_sequence": "3",
+      "game_formal_name": "The Legend of Zelda: Twilight Princess",
+      "game_youtube_link": "kAwwQ7dTjRY",
+      "game_still_path": "StartScreens/TLoZ_Twilight_Princess/default.jpg",
+      "game_youtube_end_time": "80"
+    },
+    {
+      "game_title": "Overwatch",
+      "game_series_name": "Overwatch",
+      "game_series_sequence": "1",
+      "game_formal_name": "Overwatch",
+      "game_youtube_link": "ZL_YyMbqqGg",
+      "game_still_path": "StartScreens/Overwatch/default.jpg"
+    },
+    {
+      "game_title": "Bioshock: Infinite",
+      "game_series_name": "Bioshock",
+      "game_series_sequence": "3",
+      "game_formal_name": "Bioshock: Infinite",
+      "game_youtube_link": "l5zSiYgEQB8",
+      "game_still_path": "StartScreens/Bioshock_Infinite/default.jpg",
+      "game_youtube_start_time": "31"
+    },
+    {
+      "game_title": "God of War 3",
+      "game_series_name": "God of War",
+      "game_series_sequence": "3",
+      "game_formal_name": "God of War 3",
+      "game_youtube_link": "DV-E-R7X_Tc",
+      "game_still_path": "StartScreens/GodOfWar_3/default.jpg",
+      "game_youtube_start_time": "18"
+    },
+    {
+      "game_title": "Fallout 3",
+      "game_series_name": "Fallout",
+      "game_series_sequence": "3",
+      "game_formal_name": "Fallout 3",
+      "game_youtube_link": "mlh25qbT14Y",
+      "game_still_path": "StartScreens/Fallout_3/default.jpg",
+      "game_youtube_start_time": ""
     }
   ]
 }
