@@ -457,6 +457,14 @@ $(document).on('click', '.info-about', function(){
   clicked = 1;
 });
 //end about
+//about
+var submitClicked = 0;
+$(document).on('click', '.info-submit', function(){
+  $('.sumbit-row').slideToggle();
+  $('.submit-row').toggle();
+  clicked = 1;
+});
+//end about
 
 $(window).resize(function(){
   if(getCookie("player_size") == "0"){
@@ -472,3 +480,22 @@ $(window).resize(function(){
   }
 });
 
+$(document).on('change', '#GameTitle', function() {
+  //get the php page using ajax where we're making the games request
+  //return false to avoid redirection
+  //echo a list of results to webpage
+  
+  for(var i = 0; i < $('#GameTitle').val().length + 2; i ++){
+    $.ajax({
+      url: 'data/get-games-title.php?search=' + $('#GameTitle').val(),
+      success: function(data) {
+        $('#GameTitleSearchList').children().remove().end();
+        $('#GameTitleSearchList').append(data);  
+      }
+    });
+
+    //var li = document.createElement('li');
+    //$(li).text('sample text');
+    //$('#GameTitleSearchList').append(li);
+  }
+});

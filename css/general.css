@@ -373,6 +373,18 @@ a{
 ::-webkit-input-placeholder { /* WebKit browsers */
     opacity: .3 !important;
 }
+.submit-row{
+  height:100%;
+  display: none;
+  color:#fff;
+}
+#GameTitleSearchList{
+    z-index: 20;
+    position: absolute;
+    background-color: rgba(125, 125, 125, 0.8);
+    width: 100%;
+    margin-right: 15px;
+}
 #Container-mix .mix{
   display: none;
 }

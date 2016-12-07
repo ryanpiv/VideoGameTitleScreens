@@ -19,7 +19,8 @@
   <script src="bootstrap/js/bootstrap.js"></script>
   
   <script src="js/settings.js"></script>
-  <script src="js/general_js.js" ></script>
+  <!--<script src="js/general_js.js" ></script>-->
+  <script src="js/FitVids.js-master/jquery.fitvids.js"></script>
   <script src="js/FitVids.js-master/jquery.fitvids.js"></script>
 
 </head>
@@ -70,35 +71,6 @@
 	  	  <a class="info-submit">Submit</a>
 	    </div>
 	  </div>
-    </div>
-    <div class="submit-row">
-    	<div class="row">
-    		<form>
-			  <div class="form-group">
-			  	<div class="col-lg-6">
-			  		<label for="GameTitle">Game Title</label>
-			    	<input type="GameTitle" class="form-control" id="GameTitle" placeholder="Game Title">
-			    	<ul id="GameTitleSearchList"></ul>
-			  	</div>
-			  	<div class="col-lg-6">
-			  		<div class="form-group">
-			    		<label for="GameYoutubeUrl">Youtube URL</label>
-			    		<input class="form-control" id="GameYoutubeUrl" placeholder="Youtube Start Screen URL">	
-			  		</div>		
-			  	</div>
-			  </div>
-			  <div class="form-group">
-			  	<div class="col-lg-12">
-				    <label for="exampleInputFile">File input</label>
-				    <input type="file" id="imageFileInput">
-				    <p class="help-block">Attractive photo to represent game addition.</p>
-				</div>
-			  </div>
-			  <div class="col-lg-12">
-			  	<button type="submit" class="btn btn-default">Submit</button>	
-			  </div>
-			</form>
-    	</div>
     </div>
   </div>
 
