@@ -1,4 +1,4 @@
-<html>
+<html ng-app="PressPlay">
 <head>
   <link rel="shortcut icon" href="images/favicon.ico" />
 
@@ -17,13 +17,18 @@
   <script src="js/pace.min.js"></script>
   <script src="mixitup-master/src/jquery.mixitup.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
-  
+
   <script src="js/settings.js"></script>
   <script src="js/general_js.js" ></script>
   <script src="js/FitVids.js-master/jquery.fitvids.js"></script>
 
+
+  <script src="js/angular.min.js"></script>
+  <script src="js/angularjs_js.js"></script>
+  <script src="js/dataController.js"></script>
+
 </head>
-<body>
+<body ng-controller="MainController">
   <div class='container' id="loading">
 	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
 		<img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
@@ -39,7 +44,7 @@
 
   <!--
   <div style="z-index:99999; border-right:1px solid red; left:50%; height:100%; position:fixed"></div>
-  <div style="z-index:99998; border-top:1px solid red; top:50%; width:100%; position:fixed"></div> 
+  <div style="z-index:99998; border-top:1px solid red; top:50%; width:100%; position:fixed"></div>
   -->
 
   <div class="container" id="search-container">
@@ -73,31 +78,15 @@
     </div>
     <div class="submit-row">
     	<div class="row">
-    		<form>
-			  <div class="form-group">
-			  	<div class="col-lg-6">
-			  		<label for="GameTitle">Game Title</label>
-			    	<input type="GameTitle" class="form-control" id="GameTitle" placeholder="Game Title">
-			    	<ul id="GameTitleSearchList"></ul>
-			  	</div>
-			  	<div class="col-lg-6">
-			  		<div class="form-group">
-			    		<label for="GameYoutubeUrl">Youtube URL</label>
-			    		<input class="form-control" id="GameYoutubeUrl" placeholder="Youtube Start Screen URL">	
-			  		</div>		
-			  	</div>
-			  </div>
-			  <div class="form-group">
-			  	<div class="col-lg-12">
-				    <label for="exampleInputFile">File input</label>
-				    <input type="file" id="imageFileInput">
-				    <p class="help-block">Attractive photo to represent game addition.</p>
-				</div>
-			  </div>
-			  <div class="col-lg-12">
-			  	<button type="submit" class="btn btn-default">Submit</button>	
-			  </div>
-			</form>
+    		  <form name="searchGame" ng-submit="search(gamename)">
+    		  	<div class="col-lg-6">
+			    	<input type="search" class="form-control" required placeholder="Username to find" ng-model="gamename" />
+			    	<ul ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
+			    </div>
+			    <div class="col-lg-6">
+			    	<input type="submit" class="form-control" value="Search" ng-click="search(gamename)" />
+			    </div>
+			  </form>
     	</div>
     </div>
   </div>
@@ -202,7 +191,7 @@
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
 			<p class='settings-radio-desc'>Best</p>
 		</div>
-	</div>		
+	</div>
 
 	<legend class='settings-legend'></legend>
 	<div class="row">
