@@ -10,35 +10,37 @@
   <link type="text/css" rel="stylesheet" href="css/general.css" />
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="css/pace.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="lib/NotificationStyles/css/ns-default.css"/>
+  <link rel="stylesheet" href="lib/NotificationStyles/css/ns-style-bar.css"/>
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-  <script src="js/pace.min.js"></script>
-  <script src="mixitup-master/src/jquery.mixitup.js"></script>
+  <script src="js/lib/pace.min.js"></script>
+  <script src="js/mixitup-master/src/jquery.mixitup.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
 
   <script src="js/settings.js"></script>
   <script src="js/general_js.js" ></script>
   <script src="js/FitVids.js-master/jquery.fitvids.js"></script>
 
+  <script src="lib/NotificationStyles/js/modernizr.custom.js"></script>
+  <script src="lib/NotificationStyles/js/notificationFx.js"></script>
+  <script src="lib/NotificationStyles/js/classie.js"></script>
 
-  <script src="js/angular.min.js"></script>
+
+  <script src="js/lib/angular.min.js"></script>
   <script src="js/angularjs_js.js"></script>
-  <script src="js/dataController.js"></script>
+  <script src="js/Controllers/dataController.js"></script>
+  <script src="js/Controllers/gameSearchController.js"></script>
 
 </head>
 <body ng-controller="MainController">
+  <i class="fa fa-bars ui-hamburger fa-3x" aria-hidden="true"></i>
   <div class='container' id="loading">
 	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
 		<img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
-	</div>
-  </div>
-  <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4">
-  	<div class="ui-hamburger pulse">
-	  <span></span>
-	  <span></span>
-	  <span></span>
 	</div>
   </div>
 
@@ -77,14 +79,27 @@
 	  </div>
     </div>
     <div class="submit-row">
+    	<div class="loading">
+    		<i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+    	</div>
     	<div class="row">
     		  <form name="searchGame" ng-submit="search(gamename)">
     		  	<div class="col-lg-6">
-			    	<input type="search" class="form-control" required placeholder="Username to find" ng-model="gamename" />
-			    	<ul ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
+			    	<input type="search" id="gameSearchTitle" class="form-control" required placeholder="Username to find" ng-model="gamename" ng-keyup="search(gamename)" />
+			    	<ul class="gameSearchList" ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
 			    </div>
 			    <div class="col-lg-6">
-			    	<input type="submit" class="form-control" value="Search" ng-click="search(gamename)" />
+			    	<input type="search" id="youtubeurl" class="form-control" required placeholder="Youtube Video URL" />
+			    </div>
+			    <div class="col-lg-6">
+			    	<div class="form-group">
+						<label for="imgInput">File input</label>
+						<input type="file" id="imgInput">
+						<p class="help-block">Upload image to associate with video.</p>
+					</div>
+			    </div>
+			    <div class="col-lg-6">
+			    	<input type="button" class="btn btn-default" value="Submit" onclick="validateNewGameSubmit()"/>
 			    </div>
 			  </form>
     	</div>
@@ -243,5 +258,6 @@
   		$("#Container-mix-games").css('display', 'block');
   	});
   </script>
+  <script src="js/notifications.js"></script>
 </body>
 </html>

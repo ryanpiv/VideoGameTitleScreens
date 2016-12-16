@@ -4,7 +4,9 @@
   var app = angular.module("PressPlay", []);
 
   var MainController = function(
-    $scope, dataGet, $interval, $log, $location, $anchorScroll) {
+    $scope, 
+    dataGet, gameSearchController, 
+    $interval, $log, $location, $anchorScroll) {
 
     var onDataComplete = function(data) {
       $scope.gamesSearch = data;
@@ -16,8 +18,21 @@
 
     $scope.search = function(gamename){
       $log.info("Searching for " + gamename);
+      angular.element('.gameSearchList').css('display', 'block');
       dataGet.getGame(gamename).then(onDataComplete, onError); 
     };
+
+    $scope.setSearchGame = function(game){
+      $scope.gamename = game.name;
+      $scope.gamesSearch.length = 0;
+      angular.element('.gameSearchList').css('display', 'none');
+    }
+
+    $scope.clearSearchList = function() {
+      $scope.gamesSearch.length = 0;
+      angular.element('.gameSearchList').css('display', 'none');
+      $scope.gamename = "";
+    }
   }
 
   app.controller("MainController", MainController);

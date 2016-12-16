@@ -7,6 +7,10 @@
           return response.data.body;
         });
     };
+
+    var submitGame = function(gamename){
+      return "";
+    };
     
     return {
       getGame: getGame
