@@ -336,6 +336,100 @@ function toggleFullScreen() {
   }
 }
 
+var error;
+function checkValidYoutubeUrl(url){
+  url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  if(url[2] !== undefined) {
+    //ID = url[2].split(/[^0-9a-z_\-]/i);
+    //ID = ID[0];
+    return true;
+  }
+  else {
+    //ID = url;
+    error += 'The Youtube URL entered is invalid. ';
+    return false;
+  }
+}
+
+function checkValidGameImage(files) {
+  var file = files[0];
+  var fileType = file["type"];
+  var ValidImageTypes = ["image/gif", "image/jpeg", "image/png"];
+  if ($.inArray(fileType, ValidImageTypes) < 0) {
+    return false;
+    error += 'The image uploaded is not of a valid type.  Please enter only .gif, .jpeg and .png formats. ';
+  }
+  else {
+    return true;
+  }
+}
+
+function validateNewGameSubmit() {
+  $('.loading').css('display', 'block');
+
+  var youtubeUrl = $('#youtubeurl').val();
+  var youtubeCheck = checkValidYoutubeUrl(youtubeUrl);
+  var gameTitleCheck = false;
+  var gameImageCheck = checkValidGameImage($('#imgInput')[0].files);
+  $.when(
+    $.ajax({
+        url: 'data/get-games-title.php?search=' + $('#gameSearchTitle').val(),
+        async: false,
+        success: function(data) {
+          for(var i = 0; i < data.body.length; i++){
+            if(data.body[i].name == $('#gameSearchTitle').val()){
+              gameTitleCheck = true;
+              break;
+            }
+          }
+        },
+        error: function(a, b, c){
+          error += a + ' ' + b + ' ' + c + ' ' + ' '
+        }
+    })
+  ).then(
+    $('.loading').css('display', 'none'),
+    // show the notification
+    createError(error)
+  );
+}
+
+function createError(error){
+  // create the notification
+  var notification = new NotificationFx({
+
+    // element to which the notification will be appended
+    // defaults to the document.body
+    wrapper : document.body,
+
+    // the message
+    message : error,
+
+    // layout type: growl|attached|bar|other
+    layout : 'bar',
+
+    // effects for the specified layout:
+    // for growl layout: scale|slide|genie|jelly
+    // for attached layout: flip|bouncyflip
+    // for other layout: boxspinner|cornerexpand|loadingcircle|thumbslider
+    // ...
+    effect : 'slidetop',
+
+    // notice, warning, error, success
+    // will add class ns-type-warning, ns-type-error or ns-type-success
+    type : 'error',
+
+    // if the user doesn´t close the notification then we remove it 
+    // after the following time
+    ttl : 3000,
+
+    // callbacks
+    onClose : function() { return false; },
+    onOpen : function() { return false; }
+
+  });
+}
+
 //detect key input on search
 $(document).on('keyup', '.input-search', function(){
   //if($('.mix').attr
@@ -415,7 +509,9 @@ $(document).on('click', '.modal-close', function(){
   $('.modal-player').fadeOut(300);
   $('.modal-about').fadeOut(300);
   $('.modal-container-playersize').fadeOut(300);
-  $('.player-container').children().remove()
+  $('.player-container').children().remove();
+  $('#container-games').css('filter', 'blur(0px)');
+  $('#search-container').css('filter', 'blur(0px)');
   clicked = 0;
 
   $('body').removeClass('stop-scrolling');
@@ -426,6 +522,8 @@ $(document).on('click', '.modal-cover', function(){
   $('.modal-settings').fadeOut(300);
   $('.modal-player').fadeOut(300);
   $('.modal-about').fadeOut(300);
+  $('#container-games').css('filter', 'blur(0px)');
+  $('#search-container').css('filter', 'blur(0px)');
   clicked = 0;
 });
 //end close modal
@@ -445,6 +543,8 @@ $(document).on('click', '.info-settings', function(){
   $('.modal-cover').fadeIn(300);
   $('.modal-close').fadeIn(300);
   $('.modal-settings').fadeIn(300);
+  $('#container-games').css('filter', 'blur(5px)');
+  $('#search-container').css('filter', 'blur(5px)');
   checkSettingsPageLoad();
   clicked = 1;
 });
@@ -454,15 +554,15 @@ $(document).on('click', '.info-about', function(){
   $('.modal-cover').fadeIn(300);
   $('.modal-close').fadeIn(300);
   $('.modal-about').fadeIn(300);
+  $('#container-games').css('filter', 'blur(5px)');
+  $('#search-container').css('filter', 'blur(5px)');
   clicked = 1;
 });
 //end about
 //about
 var submitClicked = 0;
 $(document).on('click', '.info-submit', function(){
-  $('.sumbit-row').slideToggle();
-  $('.submit-row').toggle();
-  clicked = 1;
+  $('.submit-row').slideToggle();
 });
 //end about
 
@@ -477,25 +577,5 @@ $(window).resize(function(){
     $('video').css('top', ($('body').innerHeight() - $('iframe').height()) / 2 );
   } else if(getCookie("player_size") == "1"){
     $('video').css('top', $('body').innerHeight() - $('iframe').height());
-  }
-});
-
-$(document).on('change', '#GameTitle', function() {
-  //get the php page using ajax where we're making the games request
-  //return false to avoid redirection
-  //echo a list of results to webpage
-  
-  for(var i = 0; i < $('#GameTitle').val().length + 2; i ++){
-    $.ajax({
-      url: 'data/get-games-title.php?search=' + $('#GameTitle').val(),
-      success: function(data) {
-        $('#GameTitleSearchList').children().remove().end();
-        $('#GameTitleSearchList').append(data);  
-      }
-    });
-
-    //var li = document.createElement('li');
-    //$(li).text('sample text');
-    //$('#GameTitleSearchList').append(li);
   }
 });
