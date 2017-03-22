@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="lib/NotificationStyles/css/ns-default.css"/>
   <link rel="stylesheet" href="lib/NotificationStyles/css/ns-style-bar.css"/>
+  <link rel="stylesheet" href="lib/NotificationStyles/css/ns-message-styles.css"/>
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -85,18 +86,26 @@
     	<div class="row">
     		  <form name="searchGame" ng-submit="search(gamename)">
     		  	<div class="col-lg-6">
-			    	<input type="search" id="gameSearchTitle" class="form-control" required placeholder="Username to find" ng-model="gamename" ng-keyup="search(gamename)" />
+			    	<input type="search" id="gameSearchTitle" class="form-control" required placeholder="Game to find" ng-model="gamename" ng-keyup="search(gamename)" />
 			    	<ul class="gameSearchList" ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
 			    </div>
 			    <div class="col-lg-6">
 			    	<input type="search" id="youtubeurl" class="form-control" required placeholder="Youtube Video URL" />
 			    </div>
 			    <div class="col-lg-6">
-			    	<div class="form-group">
-						<label for="imgInput">File input</label>
-						<input type="file" id="imgInput">
-						<p class="help-block">Upload image to associate with video.</p>
-					</div>
+
+					<label>Upload Image</label>
+			        <div class="input-group">
+			            <span class="input-group-btn">
+			                <span class="btn btn-default btn-file">
+			                    Browse… <input type="file" id="imgInput">
+			                </span>
+			            </span>
+			            <input type="text" class="form-control" readonly>
+			        </div>
+			        <img id='img-upload'/>
+
+
 			    </div>
 			    <div class="col-lg-6">
 			    	<input type="button" class="btn btn-default" value="Submit" onclick="validateNewGameSubmit()"/>
@@ -107,7 +116,10 @@
   </div>
 
   <div id="container-games" class="container">
-    <div id="games-row" class="games-row"></div>
+    <div id="games-row" class="games-row">
+
+    	<?php include 'data/get-index.php';?>
+    </div>
   </div>
 
   <div class='modal-cover'></div>

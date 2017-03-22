@@ -375,10 +375,13 @@ a{
   padding:3%;
   color:#fff;
 }
+#gameSearchTitle::-webkit-input-placeholder{
+  color:black;
+}
 .gameSearchList{
   z-index: 5;
   position: absolute;
-  background-color: rgba(48, 48, 48, 0.85);
+  background-color: rgba(48, 48, 48, 0.95);
   width: 100%;
   padding-left:0;
   cursor: pointer;
@@ -556,4 +559,29 @@ iframe:hover{
 video:-webkit-full-screen {
   width: 100%;
   height: 100%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+    max-height:200px;
 }

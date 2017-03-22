@@ -1,7 +1,7 @@
 /* Common, default styles for the notification box */
 
 .ns-box {
-	position: fixed;
+	position: relative;
 	background: rgba(42,45,50,0.85);
 	padding: 22px;
 	line-height: 1.4;
