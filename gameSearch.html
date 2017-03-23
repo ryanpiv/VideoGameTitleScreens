@@ -1,4 +1,4 @@
 <li class="clearList" ng-click=clearSearchList()>Clear list <i class="fa fa-times fa-1" aria-hidden="true"></i></li>
 <legend></legend>
-<li ng-repeat="game in gamesSearch" ng-click=setSearchGame(game) data-gameid={{game.id}}>
+<li ng-repeat="game in gamesSearch" ng-click=setSearchGame(game) data-gameid={{game.id}} data-gamecollection={{game.collection}}>
 <img src={{game.cover.url}} style="height:40px"> {{game.name}}</li>

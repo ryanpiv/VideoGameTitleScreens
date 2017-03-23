@@ -353,6 +353,11 @@ function checkValidYoutubeUrl(url) {
     }
 }
 
+function formatYoutubeUrl(url) {
+    var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+    return videoid[1];
+}
+
 function checkValidGameImage(files) {
     var file = files[0];
     var fileType = file["type"];
@@ -390,12 +395,16 @@ function validateNewGameSubmit() {
             displayNotification('The supplied game title could not be validated.  Please select a valid game title from the list.');
             $('.loading').css('display', 'none');
         }
-        if(gameTitleCheck == true && youtubeCheck == true && gameImageCheck == true){
-            gameObj.gameImage = $('#imgInput')[0].files;
-            gameObj.gameTitle = $('#gameSearchTitle').val();
-            gameObj.youtubeUrl = $('#youtubeurl').val();
-            gameObj.id = data.body[i].id;
-            submitNewGame(gameObj);
+        if (gameTitleCheck == true && youtubeCheck == true && gameImageCheck == true) {
+            var file_data = $('#imgInput').prop('files')[0];
+            var form_data = new FormData();
+
+            form_data.append('file', file_data);
+            form_data.append('gameTitle', $('#gameSearchTitle').val());
+            form_data.append('youtubeUrl', formatYoutubeUrl($('#youtubeurl').val()));
+            form_data.append('id', data.body[i].id);
+
+            submitNewGame(form_data);
         }
     }).error(function(xhr, status, errorThrown) {
         console.log('error: ' + xhr.responseText + ', status: ' + status + ', ' + 'thrown: ' + errorThrown);
@@ -404,14 +413,17 @@ function validateNewGameSubmit() {
     });
 }
 
-function submitNewGame(gameObj){
+function submitNewGame(form_data) {
     $.ajax({
         url: "data/post-new-game.php",
-        data: JSON.stringify(gameObj),
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
         type: "POST"
-    }).success( function(result) {
+    }).success(function(result) {
         displayNotification(result);
-    }).error( function(xhr, status, errorThrown){
+    }).error(function(xhr, status, errorThrown) {
         displayNotification('An error has occurred: ' + xhr.responseText, 'error');
     });
 }

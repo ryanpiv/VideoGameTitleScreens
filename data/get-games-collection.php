@@ -14,7 +14,7 @@ $search = $_GET['search'];
 // These code snippets use an open-source library. http://unirest.io/php
 Unirest\Request::verifyPeer(false);
 
-$response = \Unirest\Request::get("https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name%2Ccover%2Ccollection%2Cslug&limit=20&offset=0&search=$search",
+$response = \Unirest\Request::get("https://www.igdb.com/collections/$search",
 	array(
 		"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
 		"Accept" => "application/json",
@@ -22,18 +22,6 @@ $response = \Unirest\Request::get("https://igdbcom-internet-game-database-v1.p.m
 );
 
 header('Content-Type: application/json');
-echo json_encode($response);
-
-//echo $response;
-
-//$array = $response->body;
-
-//var_dump($array);
-
-/*for($i=0; $i < count($array); $i++){
-echo '<li>' . $array[$i]->name . PHP_EOL . '</li>';
-}*/
-//print_r($response->body);
-//echo $array;
+//echo json_encode($response);
 exit();
 ?>

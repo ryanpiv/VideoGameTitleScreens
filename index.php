@@ -85,16 +85,36 @@
     	</div>
     	<div class="row">
     		  <form name="searchGame" ng-submit="search(gamename)">
+
     		  	<div class="col-lg-6">
+    		  		<label>Search for a Game</label><a href="#">?</a>
 			    	<input type="search" id="gameSearchTitle" class="form-control" required placeholder="Game to find" ng-model="gamename" ng-keyup="search(gamename)" />
 			    	<ul class="gameSearchList" ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
 			    </div>
+
 			    <div class="col-lg-6">
+			    	<label>Youtube Video URL</label><a href="#">?</a>
 			    	<input type="search" id="youtubeurl" class="form-control" required placeholder="Youtube Video URL" />
 			    </div>
 			    <div class="col-lg-6">
+			    	<label>Series Name</label><a href="#">?</a>
+			    	<input type="search" ng-model="gamecollection" id="seriesName" class="form-control" required placeholder="Game Series Name" />
+			    </div>
+			    <div class="col-lg-3">
+			    	<label>Youtube Start Time</label><a href="#">?</a>
+			    	<input type="number" id="youtubeStartTime" class="form-control" required placeholder="Youtube Start Time" />
+			    </div>
+			    <div class="col-lg-3">
+			    	<label>Youtube End Time</label><a href="#">?</a>
+			    	<input type="number" id="youtubeEndTime" class="form-control" required placeholder="Youtube End Time" />
+			    </div>
 
-					<label>Upload Image</label>
+			    <div class="col-lg-6">
+			    	<label>Series Sequence Number</label><a href="#">?</a>
+			    	<input type="number" id="seriesSequence" class="form-control" required placeholder="Game Series Sequence" />
+			    </div>
+			    <div class="col-lg-6">
+					<label>Upload Image</label><a href="#">?</a>
 			        <div class="input-group">
 			            <span class="input-group-btn">
 			                <span class="btn btn-default btn-file">
@@ -103,12 +123,10 @@
 			            </span>
 			            <input type="text" class="form-control" readonly>
 			        </div>
-			        <img id='img-upload'/>
-
-
+			        <img id='img-upload' class="img-responsive" />
 			    </div>
-			    <div class="col-lg-6">
-			    	<input type="button" class="btn btn-default" value="Submit" onclick="validateNewGameSubmit()"/>
+			    <div class="col-lg-12">
+			    	<input type="button" id="newGameSubmit" class="btn btn-primary" value="Submit" onclick="validateNewGameSubmit()"/>
 			    </div>
 			  </form>
     	</div>
