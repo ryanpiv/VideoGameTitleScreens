@@ -87,34 +87,34 @@
     		  <form name="searchGame" ng-submit="search(gamename)">
 
     		  	<div class="col-lg-6">
-    		  		<label>Search for a Game</label><a href="#">?</a>
+    		  		<label>Search for a Game</label><a data-toggle="tooltip" title="Start typing to search for a game." href="#"> ?</a>
 			    	<input type="search" id="gameSearchTitle" class="form-control" required placeholder="Game to find" ng-model="gamename" ng-keyup="search(gamename)" />
 			    	<ul class="gameSearchList" ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
 			    </div>
 
 			    <div class="col-lg-6">
-			    	<label>Youtube Video URL</label><a href="#">?</a>
+			    	<label>Youtube Video URL</label><a title="Enter the Youtube URL of the start screen video." data-toggle="tooltip" href="#"> ?</a>
 			    	<input type="search" id="youtubeurl" class="form-control" required placeholder="Youtube Video URL" />
 			    </div>
 			    <div class="col-lg-6">
-			    	<label>Series Name</label><a href="#">?</a>
+			    	<label for="seriesName">Series Name</label><a title="This field is auto populated when you select a game in the search list." data-toggle="tooltip" href="#"> ?</a>
 			    	<input type="search" disabled ng-model="gamecollection" id="seriesName" class="form-control" required placeholder="Game Series Name" />
 			    </div>
 			    <div class="col-lg-3">
-			    	<label>Youtube Start Time</label><a href="#">?</a>
+			    	<label>Youtube Start Time</label><a href="#" data-toggle="tooltip" title="Enter the amount of time in seconds the video should start at."> ?</a>
 			    	<input type="number" id="youtubeStartTime" class="form-control" required placeholder="Youtube Start Time" />
 			    </div>
 			    <div class="col-lg-3">
-			    	<label>Youtube End Time</label><a href="#">?</a>
+			    	<label>Youtube End Time</label><a href="#" data-toggle="tooltip" title="Enter the amount of time in seconds the video should end at."> ?</a>
 			    	<input type="number" id="youtubeEndTime" class="form-control" required placeholder="Youtube End Time" />
 			    </div>
 
 			    <div class="col-lg-6">
-			    	<label>Series Sequence Number</label><a href="#">?</a>
+			    	<label>Series Sequence Number</label><a href="#" data-toggle="tooltip" title="This field is auto populated when you search for a game."> ?</a>
 			    	<input type="number" disabled ng-model="gameseriessequence" id="seriesSequence" class="form-control" required placeholder="Game Series Sequence" />
 			    </div>
 			    <div class="col-lg-6">
-					<label>Upload Image</label><a href="#">?</a>
+					<label>Upload Image</label><a href="#" data-toggle="tooltip" title="Upload an image to represent the game searched for.  This shouldn't be game cover art, but should be recognizeable by the majority of people."> ?</a>
 			        <div class="input-group">
 			            <span class="input-group-btn">
 			                <span class="btn btn-default btn-file">
@@ -280,6 +280,9 @@
   </div>
 
   <script>
+  	$( function() {
+    	$('[data-toggle="tooltip"]').tooltip();  
+  	});
   	$(window).bind('load', function(){
   		$("#Container-mix-games").css('display', 'none');
   		$('#loading').fadeOut('slow');
