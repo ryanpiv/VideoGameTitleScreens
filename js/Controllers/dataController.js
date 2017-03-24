@@ -8,15 +8,11 @@
                 });
         };
 
-        var getCollection = function(id) {
-            return $http.get("data/get-games-collection.php?search=" + encodeURIComponent(id))
+        var getCollection = function(collection, id) {
+            return $http.get("data/get-games-collection.php?search=" + encodeURIComponent(collection) + "&id=" + encodeURIComponent(id))
                 .then(function(response) {
                     return response.data.body;
                 });
-        };
-
-        var submitGame = function(gamename) {
-            return "";
         };
 
         return {

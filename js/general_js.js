@@ -403,6 +403,8 @@ function validateNewGameSubmit() {
             form_data.append('gameTitle', $('#gameSearchTitle').val());
             form_data.append('youtubeUrl', formatYoutubeUrl($('#youtubeurl').val()));
             form_data.append('id', data.body[i].id);
+            form_data.append('seriesName', $('#seriesName').val());
+            form_data.append('seriesSequence', $('#seriesSequence').val());
 
             submitNewGame(form_data);
         }

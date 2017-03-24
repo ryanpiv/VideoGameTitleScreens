@@ -1,10 +1,12 @@
 <?php
-print_r($_FILES['file']);
+//print_r($_FILES['file']);
 //Array ( [name] => mass-effect-andromeda8.jpg [type] => image/jpeg [tmp_name] => C:\wamp\tmp\phpD9A0.tmp [error] => 0 [size] => 206306 )
 
 $gameTitle = $_POST['gameTitle'];
 $gameYoutubeUrl = $_POST['youtubeUrl'];
 $gameId = $_POST['id'];
+$gameSeriesSequence = $_POST['seriesSequence'];
+$gameSeriesName = $_POST['seriesName'];
 $gameImage = file_get_contents($_FILES['file']['tmp_name']);
 
 //https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&search=
@@ -53,7 +55,6 @@ try {
 			}
 			if ($game->id == $gameId) {
 				//print_r($game);
-				$gameSeriesSequence = gmdate('r', $game->first_release_date);
 				$gameTitle = $game->slug;
 				$gameFormalName = $game->name;
 
@@ -67,7 +68,7 @@ try {
 				//need to change string to be from root dir
 				$gameFolderName = 'StartScreens/' . $game->slug . '/default.jpg';
 
-				$sql = "INSERT INTO games (game_title, game_series_sequence, game_formal_name, game_youtube_link, game_still_path) VALUES ( '" . $gameTitle . "', '" . $gameSeriesSequence . "', '" . $gameFormalName . "', '" . $gameYoutubeUrl . "', '" . $gameFolderName . "')";
+				$sql = "INSERT INTO games (game_title, game_formal_name, game_youtube_link, game_still_path, game_series_sequence, game_series_name) VALUES ( '" . $gameTitle . "', '" . $gameFormalName . "', '" . $gameYoutubeUrl . "', '" . $gameFolderName . "', '" . $gameSeriesSequence . "', '" . $gameSeriesName . "')";
 				//print_r($sql);
 				if ($con->query($sql) === TRUE) {
 					$last_id = $con->insert_id;

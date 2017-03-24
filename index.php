@@ -98,7 +98,7 @@
 			    </div>
 			    <div class="col-lg-6">
 			    	<label>Series Name</label><a href="#">?</a>
-			    	<input type="search" ng-model="gamecollection" id="seriesName" class="form-control" required placeholder="Game Series Name" />
+			    	<input type="search" disabled ng-model="gamecollection" id="seriesName" class="form-control" required placeholder="Game Series Name" />
 			    </div>
 			    <div class="col-lg-3">
 			    	<label>Youtube Start Time</label><a href="#">?</a>
@@ -111,7 +111,7 @@
 
 			    <div class="col-lg-6">
 			    	<label>Series Sequence Number</label><a href="#">?</a>
-			    	<input type="number" id="seriesSequence" class="form-control" required placeholder="Game Series Sequence" />
+			    	<input type="number" disabled ng-model="gameseriessequence" id="seriesSequence" class="form-control" required placeholder="Game Series Sequence" />
 			    </div>
 			    <div class="col-lg-6">
 					<label>Upload Image</label><a href="#">?</a>

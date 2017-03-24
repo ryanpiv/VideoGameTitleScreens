@@ -12,10 +12,8 @@
       $scope.gamesSearch = data;
     };
     var onCollectionComplete = function(data){
-      debugger;
-      $log.info(data);
-
-      $scope.gamecollection = data;
+      $scope.gamecollection = data[0].name;
+      $scope.gameseriessequence = data[0].seriesSequence;
     }
 
     var onError = function(reason) {
@@ -30,7 +28,7 @@
 
     $scope.setSearchGame = function(game){
       $scope.gamename = game.name;
-      $scope.gamecollection = dataGet.getCollection(game.collection).then(onCollectionComplete, onError);
+      $scope.gamecollection = dataGet.getCollection(game.collection, game.id).then(onCollectionComplete, onError);
       $scope.gamesSearch.length = 0;
       angular.element('.gameSearchList').css('display', 'none');
     }
