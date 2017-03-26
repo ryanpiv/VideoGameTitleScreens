@@ -15,9 +15,17 @@
                 });
         };
 
+        var getPendingReviews = function(){
+            return $http.get("data/get-pending-reviews.php")
+                .then(function(response) {
+                    return response;
+                });
+        };
+
         return {
             getGame: getGame,
-            getCollection: getCollection
+            getCollection: getCollection,
+            getPendingReviews: getPendingReviews
         };
     }
 
