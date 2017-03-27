@@ -1,3 +1,13 @@
 body{
 	color: #fff;
 }
+.nav{
+	height:100%;
+	position:fixed;
+}
+.jsgrid-cell, .jsgrid-grid-header{
+	color:black !important;
+}
+section{
+	min-height:100%;
+}

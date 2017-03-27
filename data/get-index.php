@@ -7,7 +7,7 @@ $db = "pressplay";
 
 $con = mysqli_connect($hostname, $username, $password, $db);
 
-$sql = "SELECT * FROM games";
+$sql = "SELECT * FROM games where game_needs_review = 0";
 
 $result = $con->query($sql);
 

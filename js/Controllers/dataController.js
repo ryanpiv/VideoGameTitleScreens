@@ -22,13 +22,26 @@
                 });
         };
 
+        var updateGame = function(game){
+            return $http.post("data/update-game.php", JSON.stringify(game))
+                .then(function(response) {
+                    return response.data.body;
+                });
+        };
+
         return {
             getGame: getGame,
             getCollection: getCollection,
-            getPendingReviews: getPendingReviews
+            getPendingReviews: getPendingReviews,
+            updateGame: updateGame
         };
     }
 
     var module = angular.module("PressPlay");
     module.factory("dataGet", dataGet);
+
+    angular.module('MyModule', [], function($httpProvider) {
+      // Use x-www-form-urlencoded Content-Type
+      $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+    });
 }());

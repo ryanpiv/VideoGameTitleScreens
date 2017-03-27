@@ -8,6 +8,8 @@ $gameId = $_POST['id'];
 $gameSeriesSequence = $_POST['seriesSequence'];
 $gameSeriesName = $_POST['seriesName'];
 $gameImage = file_get_contents($_FILES['file']['tmp_name']);
+$gameYoutubeStartTime = $_POST['youtubeStartTime'];
+$gameYoutubeEndTime = $_POST['youtubeEndTime'];
 
 //https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&search=
 require_once 'unirest-php-master/src/Unirest.php';
@@ -68,14 +70,14 @@ try {
 				//need to change string to be from root dir
 				$gameFolderName = 'StartScreens/' . $game->slug . '/default.jpg';
 
-				$sql = "INSERT INTO games (game_title, game_formal_name, game_youtube_link, game_still_path, game_series_sequence, game_series_name) VALUES ( '" . $gameTitle . "', '" . $gameFormalName . "', '" . $gameYoutubeUrl . "', '" . $gameFolderName . "', '" . $gameSeriesSequence . "', '" . $gameSeriesName . "')";
+				$sql = "INSERT INTO games (game_title, game_formal_name, game_youtube_link, game_still_path, game_series_sequence, game_series_name, game_youtube_start_time, game_youtube_end_time) VALUES ( '" . $gameTitle . "', '" . $gameFormalName . "', '" . $gameYoutubeUrl . "', '" . $gameFolderName . "', '" . $gameSeriesSequence . "', '" . $gameSeriesName . "', '" . $gameYoutubeStartTime . "', '" . $gameYoutubeEndTime . "')";
 				//print_r($sql);
 				if ($con->query($sql) === TRUE) {
 					$last_id = $con->insert_id;
 					header('Content-type: application/json');
 					echo "New record created successfully. Last inserted ID is: " . $last_id;
 				} else {
-					die("Error: " . $sql . "<br>" . $con->error);
+					die($con->error);
 				}
 			}
 

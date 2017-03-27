@@ -405,6 +405,8 @@ function validateNewGameSubmit() {
             form_data.append('id', data.body[i].id);
             form_data.append('seriesName', $('#seriesName').val());
             form_data.append('seriesSequence', $('#seriesSequence').val());
+            form_data.append('youtubeStartTime', $('#youtubeStartTime').val());
+            form_data.append('youtubeEndTime', $('#youtubeEndTime').val());
 
             submitNewGame(form_data);
         }
