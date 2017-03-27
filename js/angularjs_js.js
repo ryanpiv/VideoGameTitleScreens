@@ -104,7 +104,7 @@
       gameObj.gametitle = $scope.gametitle;
       gameObj.gameseriesname = $scope.gameseriesname;
       gameObj.gamebackgroundcolor = $scope.gamebackgroundcolor;
-      gameObj.gameyoutubelink = $scope.gameyoutubelink;
+      gameObj.gameyoutubelink = formatYoutubeUrl($scope.gameyoutubelink);
 
       dataGet.updateGame(gameObj).then(onUpdateGameComplete, onError);
     };
