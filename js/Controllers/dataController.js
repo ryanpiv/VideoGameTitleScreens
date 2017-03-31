@@ -22,6 +22,13 @@
                 });
         };
 
+        var getTotalReviews = function(){
+            return $http.get("data/get-total-reviews.php")
+                .then(function(response) {
+                    return response.data;
+                });
+        };
+
         var updateGame = function(game){
             return $http.post("data/update-game.php", JSON.stringify(game))
                 .then(function(response) {
@@ -33,6 +40,7 @@
             getGame: getGame,
             getCollection: getCollection,
             getPendingReviews: getPendingReviews,
+            getTotalReviews: getTotalReviews,
             updateGame: updateGame
         };
     }

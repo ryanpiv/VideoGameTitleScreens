@@ -1,10 +1,10 @@
 <html ng-app="PressPlay">
 <head>
-  	<?php include('settings.php'); ?>
+  	<?php include 'settings.php';?>
   	<link href="css/admin.css" type="text/css" rel="stylesheet" />
   	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
- 
+
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 </head>
 <body ng-controller="MainController">
@@ -18,7 +18,7 @@
     </div>
     <section id="pending-reviews">
 	    <div class="col-lg-10 col-md-10">
-	    	<h1 class="page-header">Pending Reviews</h1>
+	    	<h1 class="page-header">Pending Reviews <span class="review-count">{{currentReview}}</span> / <span ng-model="totalreviews" class="review-count">{{totalReviews}}</span></h1>
 	    	<div class="row">
 	    		<div class="col-lg-4">
 			    	<input type="button" id="newGameSubmit" class="btn btn-success" value="Approve" ng-click="approveGame()"/>
@@ -53,13 +53,13 @@
 				    	<input type="number" string-to-number ng-model="gameseriessequence" disabled id="seriesSequence" class="form-control" required placeholder="Game Series Sequence" />
 				    </div>
 			    </div>
-			    
+
 			    <div class="row">
 			    	<div class="col-lg-6">
 				    	<label>Youtube Video URL</label>
 				    	<input type="search" ng-model="gameyoutubeurl" id="youtubeurl" class="form-control" required placeholder="Youtube Video URL" />
 				    </div>
-				    
+
 				    <div class="col-lg-3">
 				    	<label>Youtube Start Time</label>
 				    	<input type="number" ng-model="gameyoutubestarttime" id="youtubeStartTime" class="form-control" required placeholder="Youtube Start Time" />

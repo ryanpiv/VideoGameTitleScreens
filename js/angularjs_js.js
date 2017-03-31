@@ -56,7 +56,9 @@
         $scope.gameyoutubelink = '';
         $scope.gamevideopathintro = '';
       }
-      
+    };
+    var onTotalReviewsComplete = function(data){
+      $scope.totalReviews = data[0]['count(*)'];
     };
     var onUpdateGameComplete = function(data){
       $log.info(data);
@@ -88,6 +90,11 @@
 
     $scope.findPendingReviews = function() {
       dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
+      dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
+    };
+
+    $scope.getTotalPendingReviews = function() {
+      dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
     };
 
     $scope.approveGame = function(){
@@ -107,6 +114,10 @@
       gameObj.gameyoutubelink = formatYoutubeUrl($scope.gameyoutubelink);
 
       dataGet.updateGame(gameObj).then(onUpdateGameComplete, onError);
+    };
+
+    $scope.skipGame = function() {
+
     };
   }
 
