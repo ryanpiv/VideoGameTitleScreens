@@ -11,3 +11,6 @@ body{
 section{
 	min-height:100%;
 }
+.review-count{
+	float: right;
+}

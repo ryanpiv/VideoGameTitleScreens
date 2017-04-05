@@ -375,7 +375,7 @@ a{
   padding:3%;
   color:#fff;
 }
-#newGameSubmit{
+#newGameSubmit, .btn-game{
   width:100%;
   margin-top:30px;
 }

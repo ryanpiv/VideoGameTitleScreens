@@ -7,27 +7,27 @@
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 </head>
-<body ng-controller="MainController">
+<body ng-controller="MainController" data-ng-init="init()">
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-2 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li><a ng-click="findPendingReviews()" href="#pending-reviews">Pending Reviews <span ng-model="badgependingreviews" class="badge">{{pendingReviews}}</span></a></li>
+        <li><a ng-click="findPendingReviews()" href="#pending-reviews">Pending Reviews <span ng-model="badgependingreviews" class="badge">{{totalReviews}}</span></a></li>
         <li><a href="#edit-data">Edit Data</a></li>
       </ul>
     </div>
     <section id="pending-reviews">
 	    <div class="col-lg-10 col-md-10">
-	    	<h1 class="page-header">Pending Reviews <span class="review-count">{{currentReview}}</span> / <span ng-model="totalreviews" class="review-count">{{totalReviews}}</span></h1>
+	    	<h1 class="page-header">Pending Reviews <span class="review-count">{{currentReview}} of {{totalReviews}}</span></h1>
 	    	<div class="row">
 	    		<div class="col-lg-4">
-			    	<input type="button" id="newGameSubmit" class="btn btn-success" value="Approve" ng-click="approveGame()"/>
+			    	<input type="button" id="pendingGameSubmit" class="btn btn-success btn-game" value="Approve" ng-click="approveGame()"/>
 			    </div>
 			    <div class="col-lg-4">
-			    	<input type="button" id="newGameSubmit" class="btn btn-warning" value="Skip" ng-click="skipGame()"/>
+			    	<input type="button" id="pendingGameSkip" class="btn btn-warning btn-game" value="Skip" ng-click="skipGame()"/>
 			    </div>
 			    <div class="col-lg-4">
-			    	<input type="button" id="newGameSubmit" class="btn btn-danger" value="Delete" ng-click="deleteGame()"/>
+			    	<input type="button" id="pendingGameDelete" class="btn btn-danger btn-game" value="Delete" ng-click="deleteGame()"/>
 			    </div>
 	    	</div>
 	    	<form>
@@ -38,7 +38,7 @@
 	    		<div class="row">
 	    			<div class="col-lg-2">
 	    				<label>Game Id</label>
-	    				<input ng-model="gameid" type="search" id="gameid" class="form-control"/>
+	    				<input ng-model="gameid" readonly disabled type="search" id"gameid" class="form-control"/>
 	    			</div>
 				  	<div class="col-lg-4">
 				  		<label>Game Name</label>

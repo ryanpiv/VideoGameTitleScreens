@@ -7,8 +7,10 @@ $hostname = "mysql4.gear.host";
 $db = "pressplay";
 $con = mysqli_connect($hostname, $username, $password, $db);
 
-//query to see if game already exists
-$sql = "SELECT * FROM games where game_needs_review > 0 LIMIT 1";
+$index = $_GET['index'];
+
+//query to get next game in list
+$sql = "SELECT * FROM games where game_needs_review > 0 LIMIT " . $index . ", 1";
 $result = $con->query($sql);
 
 try {

@@ -18,7 +18,7 @@
         var getPendingReviews = function(){
             return $http.get("data/get-pending-reviews.php")
                 .then(function(response) {
-                    return response;
+                    return response.data;
                 });
         };
 
@@ -36,12 +36,20 @@
                 });
         };
 
+        var getNextReview = function(index){
+            return $http.post("data/get-next-pending-review.php?index=" + JSON.stringify(index))
+                .then(function(response) {
+                    return response.data;
+                });
+        };
+
         return {
             getGame: getGame,
             getCollection: getCollection,
             getPendingReviews: getPendingReviews,
             getTotalReviews: getTotalReviews,
-            updateGame: updateGame
+            updateGame: updateGame,
+            getNextReview: getNextReview
         };
     }
 
