@@ -9,8 +9,8 @@
         $interval, $log, $location, $anchorScroll) {
 
         $scope.init = function() {
-            dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
             dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
+            dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
         };
 
         var onDataComplete = function(data) {
@@ -25,23 +25,28 @@
                 $scope.currentReview = 1;
                 fillGameData(data);
             }
+            nextPreviousButtons();
         };
         var onTotalReviewsComplete = function(data) {
             $scope.totalReviews = data[0]['count(*)'];
         };
         var onUpdateGameComplete = function(data) {
             $log.info(data);
+            nextPreviousButtons();
         };
         var onNextReviewComplete = function(data) {
             $scope.currentReview += 1;
             fillGameData(data);
-            if ($scope.currentReview == $scope.totalReviews) {
-                //disable the skip button
-                angular.element('#pendingGameSkip').prop('disabled', true);
-            } else {
-                //enable the skip button
-                angular.element('#pendingGameSkip').prop('disabled', false);
-            }
+            nextPreviousButtons();
+        };
+        var onPreviousReviewComplete = function(data) {
+            $scope.currentReview -= 1;
+            fillGameData(data);
+            nextPreviousButtons();
+        };
+        var onDeleteGameComplete = function(data) {
+            $log.info(data);
+            nextPreviousButtons();
         };
 
         var onError = function(reason) {
@@ -95,12 +100,27 @@
             dataGet.updateGame(gameObj).then(onUpdateGameComplete, onError);
         };
 
+        $scope.previousGame = function() {
+            var r = confirm('You will lose any pending changes, are you sure?');
+            if (r == true) {
+                dataGet.getPreviousReview($scope.currentReview - 2).then(onPreviousReviewComplete, onError);
+            }
+
+        };
+
         $scope.skipGame = function() {
             var r = confirm('You will lose any pending changes, are you sure?');
             if (r == true) {
                 dataGet.getNextReview($scope.currentReview).then(onNextReviewComplete, onError);
             }
 
+        };
+
+        $scope.deleteGame = function() {
+            var r = confirm('Deleting is not undoable.  Are you sure you want to continue?');
+            if (r == true) {
+                dataGet.deleteGame($scope.gameid).then(onDeleteGameComplete, onError);
+            }
         };
 
         var fillGameData = function(data) {
@@ -144,6 +164,24 @@
                 $scope.gamevideopathintro = '';
             }
         }
+
+        var nextPreviousButtons = function() {
+            if ($scope.currentReview == 1) {
+                //disable the next button
+                angular.element('#pendingGamePrevious').prop('disabled', true);
+            } else {
+                //enable the next button
+                angular.element('#pendingGamePrevious').prop('disabled', false);
+            }
+
+            if ($scope.currentReview == $scope.totalReviews) {
+                //disable the previous button
+                angular.element('#pendingGameSkip').prop('disabled', true);
+            } else {
+                //enable the previous button
+                angular.element('#pendingGameSkip').prop('disabled', false);
+            }
+        };
     }
 
     app.filter('trusted', ['$sce', function($sce) {

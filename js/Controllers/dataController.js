@@ -43,13 +43,29 @@
                 });
         };
 
+        var getPreviousReview = function(index){
+            return $http.post("data/get-previous-pending-review.php?index=" + JSON.stringify(index))
+                .then(function(response) {
+                    return response.data;
+                });
+        };
+
+        var deleteGame = function(id){
+            return $http.post("data/delete-game.php?id=" + id)
+                .then(function(response) {
+                    return response.data;
+                });
+        };
+
         return {
             getGame: getGame,
             getCollection: getCollection,
             getPendingReviews: getPendingReviews,
             getTotalReviews: getTotalReviews,
             updateGame: updateGame,
-            getNextReview: getNextReview
+            getNextReview: getNextReview,
+            getPreviousReview: getPreviousReview,
+            deleteGame: deleteGame
         };
     }
 

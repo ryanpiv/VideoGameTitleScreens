@@ -10,23 +10,26 @@
 <body ng-controller="MainController" data-ng-init="init()">
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-2 col-md-2 sidebar">
+    <div class="col-lg-1 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
         <li><a ng-click="findPendingReviews()" href="#pending-reviews">Pending Reviews <span ng-model="badgependingreviews" class="badge">{{totalReviews}}</span></a></li>
         <li><a href="#edit-data">Edit Data</a></li>
       </ul>
     </div>
     <section id="pending-reviews">
-	    <div class="col-lg-10 col-md-10">
+	    <div class="col-lg-11 col-md-10">
 	    	<h1 class="page-header">Pending Reviews <span class="review-count">{{currentReview}} of {{totalReviews}}</span></h1>
 	    	<div class="row">
-	    		<div class="col-lg-4">
+	    		<div class="col-lg-3">
 			    	<input type="button" id="pendingGameSubmit" class="btn btn-success btn-game" value="Approve" ng-click="approveGame()"/>
 			    </div>
-			    <div class="col-lg-4">
-			    	<input type="button" id="pendingGameSkip" class="btn btn-warning btn-game" value="Skip" ng-click="skipGame()"/>
+			    <div class="col-lg-3">
+			    	<input type="button" id="pendingGamePrevious" class="btn btn-warning btn-game" disabled readonly value="Previous" ng-click="previousGame()"/>
 			    </div>
-			    <div class="col-lg-4">
+			    <div class="col-lg-3">
+			    	<input type="button" id="pendingGameSkip" class="btn btn-warning btn-game" value="Next" ng-click="skipGame()"/>
+			    </div>
+			    <div class="col-lg-3">
 			    	<input type="button" id="pendingGameDelete" class="btn btn-danger btn-game" value="Delete" ng-click="deleteGame()"/>
 			    </div>
 	    	</div>
@@ -79,7 +82,7 @@
 	    </div>
     </section>
     <section id="edit-data">
-    	<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2">
+    	<div class="col-lg-11 col-lg-offset-1 col-md-10 col-md-offset-2">
 	    	<h1 class="page-header">Edit Data</h1>
 	    	<div class="row">
 	    		<div id="jsGrid"></div>
