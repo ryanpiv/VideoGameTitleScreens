@@ -32,6 +32,7 @@
         };
         var onUpdateGameComplete = function(data) {
             $log.info(data);
+            $scope.init();
             nextPreviousButtons();
         };
         var onNextReviewComplete = function(data) {
@@ -95,7 +96,7 @@
             gameObj.gametitle = $scope.gametitle;
             gameObj.gameseriesname = $scope.gameseriesname;
             gameObj.gamebackgroundcolor = $scope.gamebackgroundcolor;
-            gameObj.gameyoutubelink = formatYoutubeUrl($scope.gameyoutubelink);
+            gameObj.gameyoutubelink = formatYoutubeUrl($scope.gameyoutubeurl);
 
             dataGet.updateGame(gameObj).then(onUpdateGameComplete, onError);
         };
@@ -131,7 +132,7 @@
                 $scope.gameseriesname = data[0].game_series_name;
                 $scope.gameseriessequence = parseInt(data[0].game_series_sequence);
                 $scope.youtubeIframeSrc = "http://youtube.com/embed/" + data[0].game_youtube_link;
-                $scope.gameyoutubeurl = "http://youtube.com/watch?v=/" + data[0].game_youtube_link;
+                $scope.gameyoutubeurl = "http://youtube.com/watch?v=" + data[0].game_youtube_link;
                 $scope.gameyoutubestarttime = parseInt(data[0].game_youtube_start_time);
                 $scope.gameyoutubeendtime = parseInt(data[0].game_youtube_end_time);
 
