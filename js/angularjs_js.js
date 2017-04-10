@@ -133,8 +133,10 @@
                 $scope.gameseriessequence = parseInt(data[0].game_series_sequence);
                 $scope.youtubeIframeSrc = "http://youtube.com/embed/" + data[0].game_youtube_link;
                 $scope.gameyoutubeurl = "http://youtube.com/watch?v=" + data[0].game_youtube_link;
-                $scope.gameyoutubestarttime = parseInt(data[0].game_youtube_start_time);
-                $scope.gameyoutubeendtime = parseInt(data[0].game_youtube_end_time);
+                $scope.gameyoutubestarttimeminutes = Math.floor(parseInt(data[0].game_youtube_start_time) / 60);
+                $scope.gameyoutubestarttimeseconds = parseInt(data[0].game_youtube_start_time) % 60;
+                $scope.gameyoutubeendtimeminutes = Math.floor(parseInt(data[0].game_youtube_end_time) / 60);
+                $scope.gameyoutubeendtimeseconds = (parseInt(data[0].game_youtube_end_time) % 60);
 
                 $scope.gamestillpath = data[0].game_still_path;
                 $scope.gametitle = data[0].game_title;
@@ -182,6 +184,28 @@
                 //enable the previous button
                 angular.element('#pendingGameSkip').prop('disabled', false);
             }
+        };
+
+        $scope.setGameStillPath = function(img){
+          $scope.gamestillpath = img;
+        };
+
+        $scope.createYoutubeURL = function(url){
+          if(!url){
+            url = $scope.gameyoutubeurl;
+          }
+          if(checkValidYoutubeUrl(url) == true){
+            url = formatYoutubeUrl(url);
+            url = 'http://youtube.com/watch?v=' + url + '&t=';
+            if($scope.gameyoutubestarttimeminutes != 0){
+              url += $scope.gameyoutubestarttimeminutes + 'm';
+            }
+            if($scope.gameyoutubestarttimeseconds){
+              url += $scope.gameyoutubestarttimeseconds + 's';
+            }
+          }
+          $scope.gameyoutubeurl = url;
+          return url;
         };
     }
 
