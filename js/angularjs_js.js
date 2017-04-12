@@ -17,8 +17,16 @@
             $scope.gamesSearch = data;
         };
         var onCollectionComplete = function(data) {
-            $scope.gamecollection = data[0].name;
-            $scope.gameseriessequence = data[0].seriesSequence;
+            if (typeof data != 'undefined') {
+                $scope.gamecollection = data[0].name;
+                $scope.gameseriessequence = data[0].seriesSequence;
+                $scope.gameseriesname = data[0].name;
+            } else {
+                $scope.gamecollection = '';
+                $scope.gameseriessequence = '';
+                $scope.gameseriesname = '';
+            }
+
         };
         var onPendingReviewsComplete = function(data) {
             if (data.length > 0) {
@@ -89,10 +97,14 @@
             gameObj.gameseriesname = $scope.gameseriesname;
             gameObj.gameseriessequence = $scope.gameseriessequence;
             gameObj.gameyoutubeurl = $scope.gameyoutubeurl;
-            gameObj.gameyoutubestarttime = $scope.gameyoutubestarttime;
-            gameObj.gameyoutubeendtime = $scope.gameyoutubeendtime;
+
+            gameObj.gameyoutubestarttimeminutes = $scope.gameyoutubestarttimeminutes;
+            gameObj.gameyoutubestarttimeseconds = $scope.gameyoutubestarttimeseconds;
+            gameObj.gameyoutubeendtimeminutes = $scope.gameyoutubeendtimeminutes;
+            gameObj.gameyoutubeendtimeseconds = $scope.gameyoutubeendtimeseconds;
 
             gameObj.gamestillpath = $scope.gamestillpath;
+            gameObj.gamestillpathdata = $scope.gamestillpathdata;
             gameObj.gametitle = $scope.gametitle;
             gameObj.gameseriesname = $scope.gameseriesname;
             gameObj.gamebackgroundcolor = $scope.gamebackgroundcolor;
@@ -133,19 +145,21 @@
                 $scope.gameseriessequence = parseInt(data[0].game_series_sequence);
                 $scope.youtubeIframeSrc = "http://youtube.com/embed/" + data[0].game_youtube_link;
                 $scope.gameyoutubeurl = "http://youtube.com/watch?v=" + data[0].game_youtube_link;
-                $scope.gameyoutubestarttimeminutes = Math.floor(parseInt(data[0].game_youtube_start_time) / 60);
-                $scope.gameyoutubestarttimeseconds = parseInt(data[0].game_youtube_start_time) % 60;
-                $scope.gameyoutubeendtimeminutes = Math.floor(parseInt(data[0].game_youtube_end_time) / 60);
-                $scope.gameyoutubeendtimeseconds = (parseInt(data[0].game_youtube_end_time) % 60);
-
+                $scope.gameyoutubestarttimeminutes = parseInt(data[0].game_youtube_start_time_minutes);
+                $scope.gameyoutubestarttimeseconds = parseInt(data[0].game_youtube_start_time_seconds);
+                $scope.gameyoutubeendtimeminutes = parseInt(data[0].game_youtube_end_time_minutes);
+                $scope.gameyoutubeendtimeseconds = parseInt(data[0].game_youtube_end_time_seconds);
                 $scope.gamestillpath = data[0].game_still_path;
+
+                //shit i dont think i need
                 $scope.gametitle = data[0].game_title;
-                $scope.gameseriesname = data[0].game_series_name;
                 $scope.gamevideopath = data[0].game_video_path;
                 $scope.gamebackgroundcolor = data[0].game_background_color;
                 $scope.gameaudiopath = data[0].game_audio_path;
                 $scope.gameyoutubelink = data[0].game_youtube_link;
                 $scope.gamevideopathintro = data[0].game_video_path_intro;
+
+                $scope.createYoutubeURL();
             } else {
                 $scope.gameid = '';
                 $scope.gamename = '';
@@ -154,10 +168,13 @@
                 $scope.gameseriessequence = '';
                 $scope.youtubeIframeSrc = '';
                 $scope.gameyoutubeurl = '';
-                $scope.gameyoutubestarttime = '';
-                $scope.gameyoutubeendtime = '';
-
+                $scope.gameyoutubestarttimeminutes = '';
+                $scope.gameyoutubestarttimeseconds = '';
+                $scope.gameyoutubeendtimeminutes = '';
+                $scope.gameyoutubeendtimeseconds = '';
                 $scope.gamestillpath = '';
+
+                //shit i dont think i need
                 $scope.gametitle = '';
                 $scope.gameseriesname = '';
                 $scope.gamevideopath = '';
@@ -166,6 +183,8 @@
                 $scope.gameyoutubelink = '';
                 $scope.gamevideopathintro = '';
             }
+            $scope.gamestillpathdata = '';
+            //this is always null as it only ever gets filled when the file input changes
         }
 
         var nextPreviousButtons = function() {
@@ -186,26 +205,58 @@
             }
         };
 
-        $scope.setGameStillPath = function(img){
-          $scope.gamestillpath = img;
+        $scope.setGameStillPath = function(input) {
+            //$scope.gamestillpath = img;
+            var reader = new FileReader();
+            reader.readAsDataURL(input.files[0]);
+            reader.onload = function(e) {
+                $scope.gamestillpathdata = e.target.result;
+            }
+            $scope.gamestillpath = input.files[0].name;
         };
 
-        $scope.createYoutubeURL = function(url){
-          if(!url){
-            url = $scope.gameyoutubeurl;
-          }
-          if(checkValidYoutubeUrl(url) == true){
-            url = formatYoutubeUrl(url);
-            url = 'http://youtube.com/watch?v=' + url + '&t=';
-            if($scope.gameyoutubestarttimeminutes != 0){
-              url += $scope.gameyoutubestarttimeminutes + 'm';
+        $scope.createYoutubeURL = function(url) {
+            var embedUrl;
+            var embedStartTime = 0;
+            if (!url) {
+                url = $scope.gameyoutubeurl;
             }
-            if($scope.gameyoutubestarttimeseconds){
-              url += $scope.gameyoutubestarttimeseconds + 's';
+
+
+            if (checkValidYoutubeUrl(url) == true) {
+                url = formatYoutubeUrl(url);
+                embedUrl = 'http://youtube.com/embed/' + url;
+                url = 'http://youtube.com/watch?v=' + url;
+                
+                if (!(isNaN($scope.gameyoutubestarttimeminutes)) || !(isNaN($scope.gameyoutubestarttimeseconds))) {
+                    url += '&t=';
+                    if (!(isNaN($scope.gameyoutubestarttimeminutes))) {
+                        if ($scope.gameyoutubestarttimeminutes != 0 || parseInt($scope.gameyoutubestarttimeminutes) > 0) {
+                            url += $scope.gameyoutubestarttimeminutes + 'm';
+                            embedStartTime = $scope.gameyoutubestarttimeminutes * 60;
+                        }
+                    }
+                    if (!(isNaN($scope.gameyoutubestarttimeseconds))) {
+                        if ($scope.gameyoutubestarttimeseconds != 0 || parseInt($scope.gameyoutubestarttimeseconds) > 0) {
+                            url += $scope.gameyoutubestarttimeseconds + 's';
+                            embedStartTime += $scope.gameyoutubestarttimeseconds;
+                        }
+                    }
+                }
+                if (embedStartTime != 0) {
+                    embedUrl += '?start=' + embedStartTime;
+                }
             }
-          }
-          $scope.gameyoutubeurl = url;
-          return url;
+            $scope.gameyoutubeurl = url;
+            $scope.youtubeIframeSrc = embedUrl;
+            return url;
+        };
+
+        $scope.preventNegativeInput = function($event) {
+            var e = $event;
+            if (!((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 8)) {
+                return false;
+            }
         };
     }
 

@@ -30,7 +30,7 @@ if (!$result) {
 		$output .= ' data-game-formal-name="' . strtoupper($row['game_formal_name']) . '"';
 		$output .= ' data-game-audio-path="' . $row['game_audio_path'] . '"';
 		$output .= ' data-game-youtube-link="' . $row['game_youtube_link'] . '"';
-		$output .= ' data-game-youtube-start-time="' . $row['game_youtube_start_time'] . '"';
+		$output .= ' data-game-youtube-start-time-="' . $row['game_youtube_start_time_seconds'] . '"';
 		$output .= ' data-game-path-intro="' . $row['game_video_path_intro'] . '">';
 		$output .= '</div><div class="game-title hover-in">' . $row['game_formal_name'] . '</div></div>';
 
