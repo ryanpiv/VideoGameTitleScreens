@@ -2,10 +2,6 @@
 <head>
   	<?php include 'settings.php';?>
   	<link href="css/admin.css" type="text/css" rel="stylesheet" />
-  	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
-	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
-
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 </head>
 <body ng-controller="MainController" data-ng-init="init()">
 <div class="container-fluid">
@@ -152,16 +148,24 @@
     </section>
     <section id="edit-data">
     	<div class="col-lg-11 col-lg-offset-1 col-md-10 col-md-offset-2">
-	    	<h1 class="page-header">Edit Data</h1>
-	    	<div class="row">
-	    		<div id="jsGrid"></div>
-	    	</div>
-	    </div>
+    		<h1 class="page-header">Edit Data</h1>
+
+    		<p>Current page: {{ gridApi.pagination.getPage() }} of {{ gridApi.pagination.getTotalPages() }}</p>
+			<button type="button" class="btn btn-success" ng-click="gridApi2.pagination.previousPage()">
+			previous page
+			</button>
+			<button type="button" class="btn btn-success" ng-click="gridApi2.pagination.nextPage()">
+			next page
+			</button>
+			<button type="button" class="btn btn-success" ng-click="gridApi2.pagination.seek(3)">
+			go to page 3
+			</button>
+
+			<div ui-grid="gridPagedGames" id="gridPagedGames1" ui-grid-pagination class="grid"></div>
+		</div>
     </section>
   </div>
 </div>
-
-<script src="js/admin_games_grid.js"></script>
 
 </body>
 </html>

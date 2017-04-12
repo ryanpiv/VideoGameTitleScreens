@@ -57,6 +57,20 @@
                 });
         };
 
+        var getPagedGames = function(pageNum){
+            return $http.get("data/get-paged-games.php?pageNum=" + pageNum)
+                .then(function(response){
+                    return response.data;
+                });
+        };
+
+        var getTotalRecords = function(){
+            return $http.get("data/get-total-records.php?")
+                .then(function(response){
+                    return response.data;
+                });
+        };
+
         return {
             getGame: getGame,
             getCollection: getCollection,
@@ -65,7 +79,8 @@
             updateGame: updateGame,
             getNextReview: getNextReview,
             getPreviousReview: getPreviousReview,
-            deleteGame: deleteGame
+            deleteGame: deleteGame,
+            getPagedGames: getPagedGames
         };
     }
 

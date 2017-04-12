@@ -31,5 +31,9 @@
 
 <script src="js/lib/angular.min.js"></script>
 <script src="js/angularjs_js.js"></script>
+
 <script src="js/Controllers/dataController.js"></script>
 <script src="js/Controllers/gameSearchController.js"></script>
+
+<link rel="styleSheet" href="lib/ui-grid.info-gh-pages/release/ui-grid.min.css"/>
+<script src="lib/ui-grid.info-gh-pages/release/ui-grid.min.js"></script>

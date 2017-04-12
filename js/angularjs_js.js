@@ -1,16 +1,47 @@
 // Code goes here
 
 (function() {
-    var app = angular.module("PressPlay", []);
+    var app = angular.module("PressPlay", ['ui.grid']);
 
     var MainController = function(
         $scope,
         dataGet, gameSearchController,
         $interval, $log, $location, $anchorScroll) {
 
+        $scope.gridColumns = [
+            { field: 'game_id', name: 'ID' },
+            { field: 'game_title', name: 'Title' },
+            { field: 'game_formal_name', name: 'Formal Name' },
+            { field: 'game_series_name', name: 'Series Name' },
+            { field: 'game_series_sequence', name: 'Sequence' },
+            { field: 'game_youtube_link', name: 'Youtube Link' },
+            { field: 'game_youtube_start_time_minutes', name: 'Start Minutes' },
+            { field: 'game_youtube_start_time_seconds', name: 'Start Seconds' },
+            { field: 'game_needs_review', name: 'Needs Review' }
+        ];
+
         $scope.init = function() {
             dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
             dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
+
+            //grid stuff
+            $scope.gridPagedGames = {
+                columnDefs: $scope.gridColumns,
+                enablePaginationControls: false,
+                paginationPageSize: 10,
+                totalItems: dataGet.getTotalRecords().then(onTotalRecordsComplete, onError);
+                onRegisterApi: function(gridApi) {
+                    $scope.gridApi = gridApi;
+                },
+                paginationPageSizes: [10, 25, 50],
+                useExternalPagination: true,
+                data: dataGet.getPagedGames(1).then(onPagedGridComplete, onError)
+            };
+            //dataGet.getPagedGames(1).then(onPagedGridComplete, onError);
+        };
+
+        var getGridPage = function(){
+
         };
 
         var onDataComplete = function(data) {
@@ -56,6 +87,12 @@
         var onDeleteGameComplete = function(data) {
             $log.info(data);
             nextPreviousButtons();
+        };
+        var onPagedGridComplete = function(data) {
+            $scope.gridPagedGames.data = data;
+        };
+        var onTotalRecordsComplete = function(data){
+            return data;
         };
 
         var onError = function(reason) {
@@ -227,7 +264,7 @@
                 url = formatYoutubeUrl(url);
                 embedUrl = 'http://youtube.com/embed/' + url;
                 url = 'http://youtube.com/watch?v=' + url;
-                
+
                 if (!(isNaN($scope.gameyoutubestarttimeminutes)) || !(isNaN($scope.gameyoutubestarttimeseconds))) {
                     url += '&t=';
                     if (!(isNaN($scope.gameyoutubestarttimeminutes))) {

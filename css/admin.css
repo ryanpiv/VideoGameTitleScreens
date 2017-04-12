@@ -1,5 +1,8 @@
 body{
-	color: #fff;
+	color:white;
+}
+.container-fluid{
+	padding-bottom:500px !important;
 }
 .nav{
 	height:100%;
@@ -13,4 +16,12 @@ section{
 }
 .review-count{
 	float: right;
+}
+.grid {
+  width: 100%;
+  height:35px;
+  color:black;
+}
+.ui-grid-render-container{
+	margin-bottom: 100px;
 }
