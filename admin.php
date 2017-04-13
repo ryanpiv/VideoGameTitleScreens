@@ -15,19 +15,30 @@
     </div>
     <section id="pending-reviews">
 	    <div class="col-lg-11 col-md-10">
-	    	<h1 class="page-header">Pending Reviews <span class="review-count">{{currentReview}} of {{totalReviews}}</span></h1>
-	    	<div class="row">
-	    		<div class="col-lg-3">
+	    	<h1 class="page-header">{{pageHeader}}
+	    		<span id="spanCurrentReviewTracker" class="review-count">{{currentReview}} of {{totalReviews}}
+	    		</span>
+	    	</h1>
+	    	<div class="overlay">
+	    		<div class="horizontal">
+	    			<div class="vertical"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+	    		</div>
+	    	</div>
+	    	<div class="row flex-fill-row">
+	    		<div id="pendingGameSubmitCol" class="flex-fill-row-item">
 			    	<input type="button" id="pendingGameSubmit" class="btn btn-success btn-game" value="Approve" ng-click="approveGame()"/>
 			    </div>
-			    <div class="col-lg-3">
+			    <div id="pendingGamePreviousCol" class="flex-fill-row-item">
 			    	<input type="button" id="pendingGamePrevious" class="btn btn-warning btn-game" disabled readonly value="Previous" ng-click="previousGame()"/>
 			    </div>
-			    <div class="col-lg-3">
+			    <div id="pendingGameSkipCol" class="flex-fill-row-item">
 			    	<input type="button" id="pendingGameSkip" class="btn btn-warning btn-game" value="Next" ng-click="skipGame()"/>
 			    </div>
-			    <div class="col-lg-3">
+			    <div id="pendingGameDeleteCol" class="flex-fill-row-item">
 			    	<input type="button" id="pendingGameDelete" class="btn btn-danger btn-game" value="Delete" ng-click="deleteGame()"/>
+			    </div>
+			    <div id="enablePendingReviewsCol" class="flex-fill-row-item">
+			    	<input type="button" id="enablePendingReviews" class="btn btn-warning btn-game review-count" value="Back to Pending Reviews" ng-click="callActivateReviewMode()" />
 			    </div>
 	    	</div>
 	    	<form>
@@ -99,7 +110,7 @@
 					                    Browse… <input type="file" id="imgInp" onchange="" >
 					                </span>
 					            </span>
-					            <input type="text" class="form-control" readonly>
+					            <input type="text" value={{gamestillpathinput}} class="form-control" readonly>
 					        </div>
 					        <img id='img-upload' src="{{gamestillpath}}" />
 					    </div>
@@ -150,19 +161,7 @@
     <section id="edit-data">
     	<div class="col-lg-11 col-lg-offset-1 col-md-10 col-md-offset-2">
     		<h1 class="page-header">Edit Data</h1>
-
-    		<p>Current page: {{ gridApi.pagination.getPage() }} of {{ gridApi.pagination.getTotalPages() }}</p>
-			<button type="button" class="btn btn-success" ng-click="gridApi2.pagination.previousPage()">
-			previous page
-			</button>
-			<button type="button" class="btn btn-success" ng-click="gridApi2.pagination.nextPage()">
-			next page
-			</button>
-			<button type="button" class="btn btn-success" ng-click="gridApi2.pagination.seek(3)">
-			go to page 3
-			</button>
-
-			<div ui-grid="gridPagedGames" id="gridPagedGames1" ui-grid-pagination class="grid"></div>
+			<div ui-grid="gridPagedGames" id="gridPagedGames1" ui-grid-pagination ui-grid-selection class="grid"></div>
 		</div>
     </section>
   </div>

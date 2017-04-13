@@ -1,6 +1,9 @@
 body{
 	color:white;
 }
+.game-item{
+	height:150px;
+}
 .container-fluid{
 	padding-bottom:500px !important;
 }
@@ -19,6 +22,7 @@ section{
 }
 .grid {
   width: 100%;
+  height:100%;
   color:black;
 }
 .ui-grid-render-container{
@@ -26,4 +30,15 @@ section{
 }
 .ui-grid-pager-panel{
 	background-color:#fff;
+}
+
+.flex-fill-row{
+	display: flex;
+}
+.flex-fill-row-item{
+	flex-grow: 1;
+	margin:10px;
+}
+#enablePendingReviewsCol{
+	display: none;
 }

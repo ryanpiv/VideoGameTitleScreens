@@ -1,12 +1,14 @@
 // Code goes here
 
 (function() {
-    var app = angular.module("PressPlay", ['ui.grid', 'ui.grid.pagination']);
+    var app = angular.module("PressPlay", ['ui.grid', 'ui.grid.pagination', 'ui.grid.selection']);
 
     var MainController = function(
         $scope,
         dataGet, gameSearchController,
         $interval, $log, $location, $anchorScroll, uiGridConstants) {
+
+        $scope.pageHeader = 'Pending Reviews';
 
         $scope.gridColumns = [
             { field: 'game_id', name: 'ID' },
@@ -28,6 +30,7 @@
         };
 
         $scope.init = function() {
+            $('.overlay').show();
             dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
             dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
 
@@ -39,6 +42,9 @@
                 totalItems: dataGet.getTotalRecords().then(onTotalRecordsComplete, onError),
                 paginationPageSizes: [10, 25, 50],
                 useExternalPagination: true,
+                enableRowSelection: true,
+                enableRowHeaderSelection: false,
+                multiSelect: false,
                 data: dataGet.getPagedGames(paginationOptions).then(onPagedGridComplete, onError),
                 onRegisterApi: function(gridApi) {
                     $scope.gridApi = gridApi;
@@ -58,12 +64,20 @@
                         dataGet.getPagedGames(paginationOptions).then(onPagedGridComplete, onError);
                         dataGet.getTotalRecords().then(onTotalRecordsComplete, onError);
                     });
+                    /*gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue) {
+                        $log.info('edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue);
+                        $scope.$apply();
+                    });*/
+                    gridApi.selection.on.rowSelectionChanged($scope, function(row) {
+                        fillGameData([row.entity]);
+                        activateEditMode(row.entity.game_formal_name);
+                    });
                 }
             };
         };
 
-        var getGridPage = function() {
-
+        $scope.clearAll = function() {
+            $scope.gridApi.selection.clearSelectedRows();
         };
 
         var onDataComplete = function(data) {
@@ -87,6 +101,7 @@
                 fillGameData(data);
             }
             nextPreviousButtons();
+            $('.overlay').hide();
         };
         var onTotalReviewsComplete = function(data) {
             $scope.totalReviews = data[0]['count(*)'];
@@ -95,20 +110,24 @@
             $log.info(data);
             $scope.init();
             nextPreviousButtons();
+            $('.overlay').hide();
         };
         var onNextReviewComplete = function(data) {
             $scope.currentReview += 1;
             fillGameData(data);
             nextPreviousButtons();
+            $('.overlay').hide();
         };
         var onPreviousReviewComplete = function(data) {
             $scope.currentReview -= 1;
             fillGameData(data);
             nextPreviousButtons();
+            $('.overlay').hide();
         };
         var onDeleteGameComplete = function(data) {
             $log.info(data);
             nextPreviousButtons();
+            $('.overlay').hide();
         };
         var onPagedGridComplete = function(data) {
             $scope.gridPagedGames.data = data;
@@ -141,6 +160,7 @@
         };
 
         $scope.findPendingReviews = function() {
+            $('.overlay').show();
             dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
             dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
         };
@@ -158,31 +178,47 @@
         };
 
         $scope.approveGame = function() {
-            var gameObj = {};
-            gameObj.gameid = $scope.gameid;
-            gameObj.gamename = $scope.gamename;
-            gameObj.gameseriesname = $scope.gameseriesname;
-            gameObj.gameseriessequence = $scope.gameseriessequence;
-            gameObj.gameyoutubeurl = $scope.gameyoutubeurl;
+            $('.overlay').show();
 
-            gameObj.gameyoutubestarttimeminutes = $scope.gameyoutubestarttimeminutes;
-            gameObj.gameyoutubestarttimeseconds = $scope.gameyoutubestarttimeseconds;
-            gameObj.gameyoutubeendtimeminutes = $scope.gameyoutubeendtimeminutes;
-            gameObj.gameyoutubeendtimeseconds = $scope.gameyoutubeendtimeseconds;
+            var form_data = new FormData();
+            var file_data = $('#imgInp').prop('files')[0];
+            form_data.append('file', file_data);
 
-            gameObj.gamestillpath = $scope.gamestillpath;
-            gameObj.gamestillpathdata = $scope.gamestillpathdata;
-            gameObj.gametitle = $scope.gametitle;
-            gameObj.gameseriesname = $scope.gameseriesname;
-            gameObj.gamebackgroundcolor = $scope.gamebackgroundcolor;
-            gameObj.gameyoutubelink = formatYoutubeUrl($scope.gameyoutubeurl);
+            form_data.append('gameid', $scope.gameid);
+            form_data.append('gamename', $scope.gamename);
+            form_data.append('gameseriesname', $scope.gameseriesname);
+            form_data.append('gameseriessequence', $scope.gameseriessequence);
+            form_data.append('gameyoutubestarttimeminutes', $scope.gameyoutubestarttimeminutes);
+            form_data.append('gameyoutubestarttimeseconds', $scope.gameyoutubestarttimeseconds);
+            form_data.append('gameyoutubeendtimeminutes', $scope.gameyoutubestarttimeminutes);
+            form_data.append('gameyoutubeendtimeseconds', $scope.gameyoutubestarttimeseconds);
+            form_data.append('gametitle', $scope.gametitle);
+            //gyturl = user input field
+            //gyulink = $scope data
+            form_data.append('gameyoutubelink', formatYoutubeUrl($scope.gameyoutubeurl));
 
-            dataGet.updateGame(gameObj).then(onUpdateGameComplete, onError);
+            $.ajax({
+                url: "data/update-game.php",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: "POST"
+            }).success(function(result) {
+                displayNotification('Success');
+                $('.overlay').hide();
+            }).error(function(xhr, status, errorThrown) {
+                displayNotification('An error has occurred: ' + xhr.responseText, 'error');
+                $('.overlay').hide();
+            });
+
+            //dataGet.updateGame(form_data).then(onUpdateGameComplete, onError);
         };
 
         $scope.previousGame = function() {
             var r = confirm('You will lose any pending changes, are you sure?');
             if (r == true) {
+                $('.overlay').show();
                 dataGet.getPreviousReview($scope.currentReview - 2).then(onPreviousReviewComplete, onError);
             }
 
@@ -191,6 +227,7 @@
         $scope.skipGame = function() {
             var r = confirm('You will lose any pending changes, are you sure?');
             if (r == true) {
+                $('.overlay').show();
                 dataGet.getNextReview($scope.currentReview).then(onNextReviewComplete, onError);
             }
 
@@ -199,6 +236,7 @@
         $scope.deleteGame = function() {
             var r = confirm('Deleting is not undoable.  Are you sure you want to continue?');
             if (r == true) {
+                $('.overlay').show();
                 dataGet.deleteGame($scope.gameid).then(onDeleteGameComplete, onError);
             }
         };
@@ -217,6 +255,7 @@
                 $scope.gameyoutubeendtimeminutes = parseInt(data[0].game_youtube_end_time_minutes);
                 $scope.gameyoutubeendtimeseconds = parseInt(data[0].game_youtube_end_time_seconds);
                 $scope.gamestillpath = data[0].game_still_path;
+                $scope.gamestillpathinput = 'default.jpg';
 
                 //shit i dont think i need
                 $scope.gametitle = data[0].game_title;
@@ -240,6 +279,7 @@
                 $scope.gameyoutubeendtimeminutes = '';
                 $scope.gameyoutubeendtimeseconds = '';
                 $scope.gamestillpath = '';
+                $scope.gamestillpathinput = '';
 
                 //shit i dont think i need
                 $scope.gametitle = '';
@@ -253,6 +293,34 @@
             $scope.gamestillpathdata = '';
             //this is always null as it only ever gets filled when the file input changes
         }
+
+        var activateEditMode = function(gameName) {
+            $('#pendingGamePreviousCol').css('display', 'none');
+            $('#pendingGameSkipCol').css('display', 'none');
+            $('#spanCurrentReviewTracker').css('display', 'none');
+            $scope.pageHeader = 'Editing ' + gameName;
+
+            $('#enablePendingReviewsCol').css('display', 'block');
+        };
+        $scope.callActivateEditMode = function(gameName) {
+            activateEditMode(gameName);
+        };
+
+        var activateReviewMode = function() {
+            $('#pendingGamePreviousCol').css('display', 'block');
+            $('#pendingGameSkipCol').css('display', 'block');
+            $('#spanCurrentReviewTracker').css('display', 'block');
+            $scope.pageHeader = 'Pending Reviews';
+
+            dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
+            dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
+            $scope.clearAll();
+
+            $('#enablePendingReviewsCol').css('display', 'none');
+        };
+        $scope.callActivateReviewMode = function() {
+            activateReviewMode();
+        };
 
         var nextPreviousButtons = function() {
             if ($scope.currentReview == 1) {

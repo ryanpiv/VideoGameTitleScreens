@@ -29,8 +29,8 @@
                 });
         };
 
-        var updateGame = function(game){
-            return $http.post("data/update-game.php", JSON.stringify(game))
+        var updateGame = function(form_data){
+            return $http.post("data/update-game.php", form_data)
                 .then(function(response) {
                     return response.data.body;
                 });
