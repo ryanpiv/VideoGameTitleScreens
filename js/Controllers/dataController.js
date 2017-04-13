@@ -57,8 +57,8 @@
                 });
         };
 
-        var getPagedGames = function(pageNum){
-            return $http.get("data/get-paged-games.php?pageNum=" + pageNum)
+        var getPagedGames = function(paginationOptions){
+            return $http.get("data/get-paged-games.php?pageNum=" + paginationOptions.pageNumber + "&pageSize=" + paginationOptions.pageSize + "&sort=" + paginationOptions.sort + "&sortCol=" + paginationOptions.sortCol)
                 .then(function(response){
                     return response.data;
                 });
@@ -80,7 +80,8 @@
             getNextReview: getNextReview,
             getPreviousReview: getPreviousReview,
             deleteGame: deleteGame,
-            getPagedGames: getPagedGames
+            getPagedGames: getPagedGames,
+            getTotalRecords: getTotalRecords
         };
     }
 

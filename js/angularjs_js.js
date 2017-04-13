@@ -1,12 +1,12 @@
 // Code goes here
 
 (function() {
-    var app = angular.module("PressPlay", ['ui.grid']);
+    var app = angular.module("PressPlay", ['ui.grid', 'ui.grid.pagination']);
 
     var MainController = function(
         $scope,
         dataGet, gameSearchController,
-        $interval, $log, $location, $anchorScroll) {
+        $interval, $log, $location, $anchorScroll, uiGridConstants) {
 
         $scope.gridColumns = [
             { field: 'game_id', name: 'ID' },
@@ -20,6 +20,13 @@
             { field: 'game_needs_review', name: 'Needs Review' }
         ];
 
+        var paginationOptions = {
+            pageNumber: 1,
+            pageSize: 10,
+            sort: null,
+            sortCol: null
+        };
+
         $scope.init = function() {
             dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
             dataGet.getPendingReviews().then(onPendingReviewsComplete, onError);
@@ -27,20 +34,35 @@
             //grid stuff
             $scope.gridPagedGames = {
                 columnDefs: $scope.gridColumns,
-                enablePaginationControls: false,
-                paginationPageSize: 10,
-                totalItems: dataGet.getTotalRecords().then(onTotalRecordsComplete, onError);
-                onRegisterApi: function(gridApi) {
-                    $scope.gridApi = gridApi;
-                },
+                enablePaginationControls: true,
+                paginationPageSize: paginationOptions.pageSize,
+                totalItems: dataGet.getTotalRecords().then(onTotalRecordsComplete, onError),
                 paginationPageSizes: [10, 25, 50],
                 useExternalPagination: true,
-                data: dataGet.getPagedGames(1).then(onPagedGridComplete, onError)
+                data: dataGet.getPagedGames(paginationOptions).then(onPagedGridComplete, onError),
+                onRegisterApi: function(gridApi) {
+                    $scope.gridApi = gridApi;
+                    $scope.gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
+                        if (sortColumns.length == 0) {
+                            paginationOptions.sort = null;
+                        } else {
+                            paginationOptions.sort = sortColumns[0].sort.direction;
+                            paginationOptions.sortCol = sortColumns[0].colDef.field;
+                            dataGet.getPagedGames(paginationOptions).then(onPagedGridComplete, onError);
+                            dataGet.getTotalRecords().then(onTotalRecordsComplete, onError);
+                        }
+                    });
+                    gridApi.pagination.on.paginationChanged($scope, function(newPage, pageSize) {
+                        paginationOptions.pageNumber = newPage;
+                        paginationOptions.pageSize = pageSize;
+                        dataGet.getPagedGames(paginationOptions).then(onPagedGridComplete, onError);
+                        dataGet.getTotalRecords().then(onTotalRecordsComplete, onError);
+                    });
+                }
             };
-            //dataGet.getPagedGames(1).then(onPagedGridComplete, onError);
         };
 
-        var getGridPage = function(){
+        var getGridPage = function() {
 
         };
 
@@ -91,8 +113,8 @@
         var onPagedGridComplete = function(data) {
             $scope.gridPagedGames.data = data;
         };
-        var onTotalRecordsComplete = function(data){
-            return data;
+        var onTotalRecordsComplete = function(data) {
+            $scope.gridPagedGames.totalItems = parseInt(data);
         };
 
         var onError = function(reason) {
@@ -125,6 +147,14 @@
 
         $scope.getTotalPendingReviews = function() {
             dataGet.getTotalReviews().then(onTotalReviewsComplete, onError);
+        };
+
+        $scope.getTotalRecords = function() {
+            dataGet.getTotalRecords().then(onTotalRecordsComplete, onError);
+        };
+
+        $scope.getPagedGames = function(pageNumber, pageSize) {
+            dataGet.getPagedGames(pageNumber, pageSize).then(onPagedGridComplete, onError);
         };
 
         $scope.approveGame = function() {

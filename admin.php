@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html ng-app="PressPlay">
 <head>
   	<?php include 'settings.php';?>

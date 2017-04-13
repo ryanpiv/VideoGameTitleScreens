@@ -8,6 +8,10 @@ $db = "pressplay";
 $con = mysqli_connect($hostname, $username, $password, $db);
 
 $pageNum = $_GET['pageNum'];
+$pageSize = intval($_GET['pageSize']);
+$sort = $_GET['sort'];
+$sortCol = $_GET['sortCol'];
+
 if ($pageNum != '') {
 	$pageNum -= 1;
 	$pageNum = $pageNum * 10;
@@ -16,7 +20,12 @@ if ($pageNum != '') {
 }
 
 //query to see if game already exists
-$sql = "SELECT * FROM games LIMIT 20 OFFSET " . $pageNum;
+if ($sort == 'null') {
+	$sql = "SELECT * FROM games LIMIT " . $pageSize . " OFFSET " . $pageNum;
+} else {
+	$sql = "SELECT * FROM games order by " . $sortCol . " " . $sort . " LIMIT " . $pageSize . " OFFSET " . $pageNum;
+}
+
 $result = $con->query($sql);
 
 try {

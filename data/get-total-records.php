@@ -7,24 +7,16 @@ $hostname = "mysql4.gear.host";
 $db = "pressplay";
 $con = mysqli_connect($hostname, $username, $password, $db);
 
-$pageNum = $_GET['pageNum'];
-if ($pageNum != '') {
-	$pageNum -= 1;
-	$pageNum = $pageNum * 10;
-} else {
-	$pageNum = 0;
-}
-
 //query to see if game already exists
-$sql = "SELECT count(*) FROM games";
+$sql = "SELECT count(*) as total FROM games";
 $result = $con->query($sql);
 
 try {
 	if (!$result) {
 		print_r("Error: " . $sql . "<br>" . $con->error);
 	} else {
-		$json = mysqli_fetch_all($result, MYSQLI_ASSOC);
-		echo json_encode($json);
+		$data = mysqli_fetch_assoc($result);
+		echo ($data['total']);
 	}
 } catch (Exception $e) {
 	die($e);
