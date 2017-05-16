@@ -99,6 +99,9 @@
             if (data.length > 0) {
                 $scope.currentReview = 1;
                 fillGameData(data);
+            } else {
+                //no pending reviews found
+                
             }
             nextPreviousButtons();
             $('.overlay').hide();

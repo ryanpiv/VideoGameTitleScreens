@@ -1,7 +1,7 @@
 <html ng-app="PressPlay">
 <head>
-  <?php include('settings.php'); ?>
-
+  <?php include 'settings.php';?>
+  <meta name="google-signin-client_id" content="882355944691-l2jr52rj73arnbdjkmt7u3dkbnoa0sjr.apps.googleusercontent.com">
 </head>
 <body ng-controller="MainController">
   <i class="fa fa-bars ui-hamburger fa-3x" aria-hidden="true"></i>
@@ -17,6 +17,14 @@
   -->
 
   <div class="container" id="search-container">
+  	<div class="user-row row">
+  		<div class="col-lg-1 col-lg-offset-10">
+  			<div class="g-signin2" data-onsuccess="onSignIn"></div>
+  		</div>
+  		<div class="col-lg-1">
+  			<a href="#" onclick="signOut();">Sign out</a>
+  		</div>
+  	</div>
 	<div class="search-row">
   	  <div class="row">
 	    <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10 div-search">
@@ -247,7 +255,7 @@
 
   <script>
   	$( function() {
-    	$('[data-toggle="tooltip"]').tooltip();  
+    	$('[data-toggle="tooltip"]').tooltip();
   	});
   	$(window).bind('load', function(){
   		$("#Container-mix-games").css('display', 'none');

@@ -16,6 +16,9 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <script src="js/lib/pace.min.js"></script>
 <script src="js/mixitup-master/src/jquery.mixitup.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
@@ -23,11 +26,11 @@
 <script src="js/settings.js"></script>
 <script src="js/general_js.js" ></script>
 <script src="js/FitVids.js-master/jquery.fitvids.js"></script>
+<script src="js/googleAuth.js"></script>
 
 <script src="lib/NotificationStyles/js/modernizr.custom.js"></script>
 <script src="lib/NotificationStyles/js/notificationFx.js"></script>
 <script src="lib/NotificationStyles/js/classie.js"></script>
-
 
 <script src="js/lib/angular.min.js"></script>
 <script src="js/angularjs_js.js"></script>
