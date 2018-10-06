@@ -1,11 +1,6 @@
 <?php
 header('Content-Type: application/json');
-
-$username = "pressplay";
-$password = "Pc16o_A3!8Zs";
-$hostname = "mysql4.gear.host";
-$db = "pressplay";
-$con = mysqli_connect($hostname, $username, $password, $db);
+require_once("config.php"); 
 
 $index = $_GET['index'];
 

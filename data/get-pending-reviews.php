@@ -1,11 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$username = "pressplay";
-$password = "Pc16o_A3!8Zs";
-$hostname = "mysql4.gear.host";
-$db = "pressplay";
-$con = mysqli_connect($hostname, $username, $password, $db);
+require_once("config.php"); 
 
 //query to see if game already exists
 $sql = "SELECT * FROM games where game_needs_review > 0 LIMIT 1";

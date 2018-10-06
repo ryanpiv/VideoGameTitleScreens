@@ -177,6 +177,7 @@ function playerShow(videoObj, videoType) {
     $('.modal-close').fadeIn(300);
     $('.modal-player').fadeIn(300);
     $('.modal-container-playersize').fadeIn(300);
+    $('#container-games').css('filter', 'blur(5px)');
     $('body').addClass('stop-scrolling');
 
     if (videoType == 'iframe') {
@@ -597,6 +598,17 @@ $(document).on('click', '.modal-playersize-full', function() {
     playerSize("2");
 });
 //end player resize buttons
+//user sign in / register modal show
+$(document).on('click', '.btn-signin', function() {
+    $('.modal-cover').fadeIn(300);
+    $('.modal-close').fadeIn(300);
+    $('.modal-signin').fadeIn(300);
+    $('#container-games').css('filter', 'blur(5px)');
+    $('#search-container').css('filter', 'blur(5px)');
+    
+    clicked = 1;
+});
+//end user sign in
 //settings
 $(document).on('click', '.info-settings', function() {
     $('.modal-cover').fadeIn(300);

@@ -2,6 +2,9 @@
 //print_r($_FILES['file']);
 //Array ( [name] => mass-effect-andromeda8.jpg [type] => image/jpeg [tmp_name] => C:\wamp\tmp\phpD9A0.tmp [error] => 0 [size] => 206306 )
 
+header('Content-Type: application/json');
+require_once("config.php"); 
+
 $gameTitle = $_POST['gameTitle'];
 $gameYoutubeUrl = $_POST['youtubeUrl'];
 $gameId = $_POST['id'];
@@ -25,20 +28,13 @@ require_once 'unirest-php-master/src/Unirest.php';
 Unirest\Request::verifyPeer(false);
 
 // These code snippets use an open-source library. http://unirest.io/php
-$response = Unirest\Request::get("https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name%2Cfirst_release_date%2Cslug%2Cid&limit=10&offset=0&order=release_dates.date%3Adesc&search=" . $gameTitle,
+$response = Unirest\Request::get("https://api-endpoint.igdb.com/games/?fields=name%2Cfirst_release_date%2Cslug%2Cid&limit=10&offset=0&order=release_dates.date%3Adesc&search=" . $gameTitle,
 	array(
-		"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
+		//"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
+		"user-key" => "f361f5b194a92307ed96c8820749ef8f",
 		"Accept" => "application/json",
 	)
 );
-
-header('Content-Type: application/json');
-
-$username = "pressplay";
-$password = "Pc16o_A3!8Zs";
-$hostname = "mysql4.gear.host";
-$db = "pressplay";
-$con = mysqli_connect($hostname, $username, $password, $db);
 
 //query to see if game already exists
 $sql = "SELECT * FROM games where game_formal_name='" . $gameTitle . "'";

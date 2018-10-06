@@ -1,5 +1,7 @@
 <?php
-//$json = json_decode(file_get_contents('php://input'));
+
+header('Content-Type: application/json');
+require_once("config.php"); 
 
 $gameId = $_POST['gameid'];
 $gameName = $_POST['gamename'];
@@ -19,14 +21,6 @@ $gameYoutubeEndTimeMinutes = $_POST['gameyoutubeendtimeminutes'];
 $gameYoutubeEndTimeSeconds = $_POST['gameyoutubeendtimeseconds'];
 
 $gameFolderName = '../StartScreens/' . $gameTitle;
-
-header('Content-Type: application/json');
-
-$username = "pressplay";
-$password = "Pc16o_A3!8Zs";
-$hostname = "mysql4.gear.host";
-$db = "pressplay";
-$con = mysqli_connect($hostname, $username, $password, $db);
 
 if ($gameImage != '') {
 	move_uploaded_file($_FILES['file']['tmp_name'], $gameFolderName . '/default.jpg');

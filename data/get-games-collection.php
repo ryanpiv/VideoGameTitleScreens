@@ -16,9 +16,10 @@ $id = $_GET['id'];
 Unirest\Request::verifyPeer(false);
 
 if ($search != 'undefined') {
-	$response = \Unirest\Request::get("https://igdbcom-internet-game-database-v1.p.mashape.com/collections/" . $search . "?fields=*",
+	$response = \Unirest\Request::get("https://api-endpoint.igdb.com/collections/" . $search . "?fields=*",
 		array(
-			"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
+			//"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
+			"user-key" => "f361f5b194a92307ed96c8820749ef8f",
 			"Accept" => "application/json",
 		)
 	);

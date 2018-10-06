@@ -1,11 +1,12 @@
 <html ng-app="PressPlay">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include 'settings.php';?>
-  <meta name="google-signin-client_id" content="882355944691-l2jr52rj73arnbdjkmt7u3dkbnoa0sjr.apps.googleusercontent.com">
+  
 </head>
 <body ng-controller="MainController">
   <i class="fa fa-bars ui-hamburger fa-3x" aria-hidden="true"></i>
-  <div class='container' id="loading">
+  <div class='container-fluid' id="loading">
 	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
 		<img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
 	</div>
@@ -16,78 +17,77 @@
   <div style="z-index:99998; border-top:1px solid red; top:50%; width:100%; position:fixed"></div>
   -->
 
-  <div class="container" id="search-container">
-  	<div class="user-row row">
-  		<div class="col-lg-1 col-lg-offset-10">
-  			<div class="g-signin2" data-onsuccess="onSignIn"></div>
-  		</div>
-  		<div class="col-lg-1">
-  			<a href="#" onclick="signOut();">Sign out</a>
+  <div class="container-fluid" id="search-container">
+  	<div class="user-row row justify-content-end">
+  		<div class="col-1">
+  			<button class="btn-signin btn">Sign In / Register</button>
   		</div>
   	</div>
+
 	<div class="search-row">
-  	  <div class="row">
-	    <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10 div-search">
+  	  <div class="row justify-content-center">
+	    <div class="col col-lg-6 div-search">
 	      <input class="input-search" type="text" placeholder="Search">
 	    </div>
       </div>
 
-	  <div class="row sort-panel">
-	    <div class="col-lg-offset-4 col-lg-2 col-md-offset-4 col-md-2 col-sm-offset-2 col-sm-4 col-xs-6">
+	  <div class="row justify-content-center sort-panel">
+	    <div class="col-6 col-lg-3">
 		  <button class="sort btn-sort btn-lg sort-active" data-sort="myorder:asc">Ascending Order</button>
 	    </div>
-	    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+	    <div class="col-6 col-lg-3">
 	  	  <button class="sort btn-sort btn-lg" data-sort="myorder:desc">Descending Order</button>
 	    </div>
 	  </div>
 
-	  <div class="row info-panel">
-	    <div class="col-lg-offset-3 col-lg-2 col-md-offset-4 col-md-2 col-sm-4 col-xs-4">
+	  <div class="row justify-content-center info-panel">
+	    <div class="col-2">
 	  	  <a class="info-about">About</a>
 	    </div>
-	    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+	    <div class="col-2">
 	  	  <a class="info-settings">Settings</a>
 	    </div>
-	    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+	    <div class="col-2">
 	  	  <a class="info-submit">Submit</a>
 	    </div>
 	  </div>
     </div>
-    <div class="submit-row">
+    <div class="submit-row row">
     	<div class="loading">
     		<i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
     	</div>
-    	<div class="row">
-    		  <form name="searchGame" ng-submit="search(gamename)">
-
-    		  	<div class="col-lg-6">
-    		  		<label>Search for a Game</label><a data-toggle="tooltip" title="Start typing to search for a game." href="#"> ?</a>
+		<form name="searchGame" ng-submit="search(gamename)">
+			<div class="form-row">
+			  	<div class="form-group col-12 col-lg-5">
+			  		<label>Search for a Game</label><a data-toggle="tooltip" title="Start typing to search for a game." href="#"> ?</a>
 			    	<input type="search" id="gameSearchTitle" class="form-control" required placeholder="Game to find" ng-model="gamename" ng-keyup="search(gamename)" />
 			    	<ul class="gameSearchList" ng-include="'gameSearch.html'" ng-show="gamesSearch"></ul>
 			    </div>
 
-			    <div class="col-lg-6">
+			    <div class="form-group col-12 col-lg-3">
 			    	<label>Youtube Video URL</label><a title="Enter the Youtube URL of the start screen video." data-toggle="tooltip" href="#"> ?</a>
 			    	<input type="search" id="youtubeurl" class="form-control" required placeholder="Youtube Video URL" />
 			    </div>
-			    <div class="col-lg-6">
-			    	<label for="seriesName">Series Name</label><a title="This field is auto populated when you select a game in the search list." data-toggle="tooltip" href="#"> ?</a>
-			    	<input type="search" disabled ng-model="gamecollection" id="seriesName" class="form-control" required placeholder="Game Series Name" />
-			    </div>
-			    <div class="col-lg-3">
+
+			    <div class="form-group col-12 col-lg-2">
 			    	<label>Youtube Start Time</label><a href="#" data-toggle="tooltip" title="Enter the amount of time in seconds the video should start at."> ?</a>
 			    	<input type="number" id="youtubeStartTime" class="form-control" required placeholder="Youtube Start Time" />
 			    </div>
-			    <div class="col-lg-3">
+			    <div class="form-group col-12 col-lg-2">
 			    	<label>Youtube End Time</label><a href="#" data-toggle="tooltip" title="Enter the amount of time in seconds the video should end at."> ?</a>
 			    	<input type="number" id="youtubeEndTime" class="form-control" required placeholder="Youtube End Time" />
 			    </div>
 
-			    <div class="col-lg-6">
+			    <div class="form-group col-12 col-lg-3">
+			    	<label for="seriesName">Series Name</label><a title="This field is auto populated when you select a game in the search list." data-toggle="tooltip" href="#"> ?</a>
+			    	<input type="search" disabled ng-model="gamecollection" id="seriesName" class="form-control" required placeholder="Game Series Name" />
+			    </div>
+
+			    <div class="form-group col-12 col-lg-3">
 			    	<label>Series Sequence Number</label><a href="#" data-toggle="tooltip" title="This field is auto populated when you search for a game."> ?</a>
 			    	<input type="number" disabled ng-model="gameseriessequence" id="seriesSequence" class="form-control" required placeholder="Game Series Sequence" />
 			    </div>
-			    <div class="col-lg-6">
+			    <div class="form-group col-12 col-lg-6">
 					<label>Upload Image</label><a href="#" data-toggle="tooltip" title="Upload an image to represent the game searched for.  This shouldn't be game cover art, but should be recognizeable by the majority of people."> ?</a>
 			        <div class="input-group">
 			            <span class="input-group-btn">
@@ -99,15 +99,15 @@
 			        </div>
 			        <img id='img-upload' class="img-responsive" />
 			    </div>
-			    <div class="col-lg-12">
+			    <div class="col-12">
 			    	<input type="button" id="newGameSubmit" class="btn btn-primary" value="Submit" onclick="validateNewGameSubmit()"/>
 			    </div>
-			  </form>
-    	</div>
+			</div>
+		</form>
     </div>
   </div>
 
-  <div id="container-games" class="container">
+  <div id="container-games" class="container-fluid">
     <div id="games-row" class="games-row">
 
     	<?php include 'data/get-index.php';?>
@@ -116,9 +116,9 @@
 
   <div class='modal-cover'></div>
 
-  <div class='modal-player container'>
+  <div class='modal-player container-fluid'>
 	<div class='row'>
-		<div class='player-container'>
+		<div class='player-container col-12'>
 		</div>
 	</div>
   </div>
@@ -129,7 +129,7 @@
   	<div class='modal-playersize-full'></div>
   </div>
 
-  <div class="modal-about container">
+  <div class="modal-about container-fluid">
   	<div class="row">
   		<div class="col-lg-offset-3 col-lg-6">
   			<p>
@@ -145,7 +145,7 @@
   	</div>
   </div>
 
-  <div class="modal-settings container">
+  <div class="modal-settings container-fluid">
   	<legend class='settings-legend'></legend>
   	<div class="row">
 		<div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8'>
@@ -242,6 +242,14 @@
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
 			<p class='settings-radio-desc'>Full Screen</p>
+		</div>
+	</div>
+  </div>
+
+  <div class="modal-signin container-fluid">
+  	<div class="row">
+		<div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8'>
+			
 		</div>
 	</div>
   </div>

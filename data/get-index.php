@@ -1,11 +1,6 @@
 <?php
 
-$username = "pressplay";
-$password = "Pc16o_A3!8Zs";
-$hostname = "mysql4.gear.host";
-$db = "pressplay";
-
-$con = mysqli_connect($hostname, $username, $password, $db);
+require_once("config.php"); 
 
 $sql = "SELECT * FROM games where game_needs_review = 0";
 
@@ -15,12 +10,12 @@ if (!$result) {
 	die("Error: " . $sql . "<br>" . $con->error);
 } else {
 	//$output ='<div id="Container" class="hover-cont"><div class="row">'
-	$output = '<div id="Container-mix" class="hover-cont">';
+	$output = '<div id="Container-mix" class="hover-cont row">';
 	while ($row = mysqli_fetch_assoc($result)) {
 		//handle rows.
 		//print_r($row);
 
-		$output .= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mix" data-myorder="' . $row['game_series_name'] . ' ' . $row['game_series_sequence'] . '"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
+		$output .= '<div class="col-6 col-lg-3 mix" data-myorder="' . $row['game_series_name'] . ' ' . $row['game_series_sequence'] . '"><div class="game-item hover-out" onmouseover="lowerOpacity(this)" onmouseout="raiseOpacity(this)" ';
 		$output .= 'style="background-image:url(' . $row['game_still_path'] . ')"';
 		$output .= ' data-game-title="' . $row['game_title'] . '"';
 		$output .= ' data-game-series-name="' . $row['game_series_name'] . '"';

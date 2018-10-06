@@ -14,10 +14,11 @@ $search = $_GET['search'];
 // These code snippets use an open-source library. http://unirest.io/php
 Unirest\Request::verifyPeer(false);
 
-$response = \Unirest\Request::get("https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name%2Ccover%2Ccollection%2Cslug&limit=20&offset=0&search=$search",
+$response = \Unirest\Request::get("https://api-endpoint.igdb.com/games/?fields=name%2Ccover%2Ccollection%2Cslug&limit=20&offset=0&search=$search",
 	array(
-		"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
-		"Accept" => "application/json",
+		//"X-Mashape-Key" => "BHOdhSjm8Mmshg24IfUdtmdVyl6dp1PBHJBjsn7UnT0WIFK1g3",
+		"user-key" => "f361f5b194a92307ed96c8820749ef8f",
+		"accept" => "application/json",
 	)
 );
 

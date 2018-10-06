@@ -2,12 +2,7 @@
 
 <?php
 
-$username = "pressplay";
-$password = "Pc16o_A3!8Zs";
-$hostname = "mysql4.gear.host";
-$db = "pressplay";
-
-$con = mysqli_connect($hostname, $username, $password, $db);
+require_once("config.php"); 
 
 $json = file_get_contents("../screens.json");
 $sql = '';
